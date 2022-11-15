@@ -38,20 +38,22 @@ class UserFilePersist {
         if (\file_exists($this->filename) && \is_readable($this->filename)) {
             $handle = \fopen($this->filename, 'r');  //returns false on error.
             if ($handle!==false) {
-                while (!\feof($handle)) {
-                    $fields = \fgetcsv($handle,1000,$this->delimiter);
-                    if(count($fields==2)){
-                        $uname = $fields[0];
-                        $pwd = $fields[1];
-                        $user = new User($uname,$pwd);
-                        array_push($result,$user);
-                    }
-                }
-                \fclose($handle);     
-            }else{
+                //while (!\feof($handle)) {
+                    //$fields = \fgetcsv($handle,1000,$this->delimiter);
+                    do{$line = "";
+                        \fscanf($handle,"%s\n", $line);
+                        $fields = \explode($this->delimiter,$line);
+                        if(count($fields)==2){
+                            $uname = $fields[0];
+                            $pwd = $fields[1];
+                            $user = new User($uname,$pwd);
+                            array_push($result,$user);
+                        }
+                }while(!\feof($handle));
+            }}else{
                 $result = array();
             }
-        }
+        
         return $result;
     }
 
