@@ -1,5 +1,5 @@
 <?php
-require_once "./interface.php";
+require_once "./speaker.php";
 abstract class Animal implements Speaker{
     
     public function __construct(public string $name){

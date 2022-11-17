@@ -1,5 +1,5 @@
 <?php
-require_once "./interface.php";
+require_once "./speaker.php";
 class Clock implements Speaker{
 
 
