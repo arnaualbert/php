@@ -1,17 +1,17 @@
 <?php
-require_once "./speaker.php";
-require_once "./animal.php";
-require_once "./cat.php";
-require_once "./dog.php";
-
+require_once 'clock.php';
+require_once 'dog.php';
+require_once 'cat.php';
+require_once 'animal.php';
+require_once 'speaker.php';
 function displayspeakerlist($list){
     foreach ($list as $k){
-        echo $k.PHP_EQL;
+        echo $k.PHP_EOL;
     }
 }
 
 function makethemtalk($lista){
-    foreach ($list as $e){
+    foreach ($lista as $e){
         echo $e->talk();
     }
 }
@@ -24,3 +24,7 @@ function main(){
     displayspeakerlist($speaker_list);
     makethemtalk($speaker_list);
 }
+
+
+
+main();
