@@ -1,4 +1,6 @@
 <?php
+require_once "./interface.php";
+require_once "./animal.php";
 class Dog extends Animal{
     
     private string $color;

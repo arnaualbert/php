@@ -1,4 +1,1 @@
-<?php
-interface Speaker {
 
-}
