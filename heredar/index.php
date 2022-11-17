@@ -6,13 +6,13 @@ require_once 'animal.php';
 require_once 'speaker.php';
 function displayspeakerlist($list){
     foreach ($list as $k){
-        echo $k.PHP_EOL;
+        echo " ".$k.PHP_EOL;
     }
 }
 
 function makethemtalk($lista){
     foreach ($lista as $e){
-        echo $e->talk();
+        echo " ".$e->talk();
     }
 }
 
