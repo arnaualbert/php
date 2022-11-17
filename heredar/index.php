@@ -25,6 +25,4 @@ function main(){
     makethemtalk($speaker_list);
 }
 
-
-
 main();
