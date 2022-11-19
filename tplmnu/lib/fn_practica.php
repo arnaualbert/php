@@ -143,6 +143,46 @@ namespace proven\files{
             fclose($fp) or die("Error al cerrar el archivo");
             return $lista;
         }
+
+
+
+
+
+
+        function readAllUserss(){
+            // to do
+            $filename = "/home/dax/public_html/tplmnu/files/daymenu.txt";
+            $delimiter = ";";
+                    $result = array();
+                    if (\file_exists($filename) && \is_readable($filename)) {
+                        $handle = \fopen($filename, 'r');  //returns false on error.
+                        if ($handle!==false) {
+                            //while (!\feof($handle)) {
+                                //$fields = \fgetcsv($handle,1000,$this->delimiter);
+                                do{$line = "";
+                                    \fscanf($handle,"%s\n", $line);
+                                    $fields = \explode($delimiter,$line);
+                                    // if(count($fields)==3){
+                                    //     $uname = $fields[0];
+                                    //     $pwd = $fields[1];
+                                    //     $s = $fields[3];
+                                        // $user = new User($uname,$pwd);
+                                    array_push($result,$fields);
+                                    #}
+                            }while(!\feof($handle));
+                        }}else{
+                            $result = array();
+                        }
+                    
+                    return $result;
+                }
+
+            $hola = readAllUserss();
+            $drinks = array();
+            foreach($hola as $k){if($k[1] == "dessert"){
+                array_push($drinks,$k);
+            }};
+            var_dump($drinks);
         
 }
 ?>
