@@ -1,0 +1,10 @@
+0;appetiser;Aceitunas
+1;appetiser;Anchoas
+2;firstcourse;Rollitos
+3;firstcourse;Ñoquis
+4;maincourse;Verduras
+5;maincourse;Rodaballo
+6;dessert;Tarta
+7;dessert;Gelato
+8;drink;Sandía
+9;drink;Papaya

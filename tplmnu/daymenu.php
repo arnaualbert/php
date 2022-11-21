@@ -33,8 +33,6 @@ $hola = files\readfood($archivo,$separador);
 
 // $hola = files\readAllUserss($archivo,$separador);
 
-
-
 $appetiser = array();
 foreach($hola as $k){if($k[1] == "appetiser"){
     array_push($appetiser,$k[2]);
@@ -93,9 +91,6 @@ foreach ($maincourse as $element){
         echo "<li>".$element."</li>";
 }
 echo "</ul>";
-
-
-
 
 
 $drinks = array();
