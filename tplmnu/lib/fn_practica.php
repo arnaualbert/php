@@ -177,12 +177,12 @@ namespace proven\files{
                     return $result;
                 }
 
-            $hola = readAllUserss();
-            $drinks = array();
-            foreach($hola as $k){if($k[1] == "dessert"){
-                array_push($drinks,$k);
-            }};
-            var_dump($drinks);
+            // $hola = readAllUserss();
+            // $drinks = array();
+            // foreach($hola as $k){if($k[1] == "dessert"){
+            //     array_push($drinks,$k);
+            // }};
+            // var_dump($drinks);
         
 }
 ?>
