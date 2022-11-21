@@ -59,14 +59,6 @@ foreach ($firstcourse as $element){
 echo "</ul>";
 
 
-
-
-
-
-
-
-
-
 $desserts = array();
 foreach($hola as $k){if($k[1] == "dessert"){
     array_push($desserts,$k[2]);
