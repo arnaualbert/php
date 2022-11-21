@@ -149,10 +149,10 @@ namespace proven\files{
 
 
 
-        function readAllUserss(){
+        function readfood($filename,$delimiter){
             // to do
-            $filename = "/home/dax/public_html/tplmnu/files/daymenu.txt";
-            $delimiter = ";";
+            // $filename = "/home/dax/public_html/tplmnu/files/daymenu.txt";
+            // $delimiter = ";";
                     $result = array();
                     if (\file_exists($filename) && \is_readable($filename)) {
                         $handle = \fopen($filename, 'r');  //returns false on error.

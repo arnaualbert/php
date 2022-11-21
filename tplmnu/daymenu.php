@@ -4,7 +4,9 @@ use proven\files;
 $archivo = "./files/daymenu.txt";
 $separador = ";";
 $appetiser = "appetiser";
-$lista = files\readmenu($archivo,$separador);
+//$lista = files\readmenu($archivo,$separador);
+$hola = files\readfood($archivo,$separador);
+
 //$lista = files\leer_fichero_completo($archivo,$appetiser);
 ?>
 <!DOCTYPE html>
@@ -29,7 +31,7 @@ $lista = files\readmenu($archivo,$separador);
 // }
 
 
-$hola = files\readAllUserss();
+// $hola = files\readAllUserss($archivo,$separador);
 
 
 
