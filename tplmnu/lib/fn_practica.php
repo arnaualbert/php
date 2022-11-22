@@ -177,14 +177,14 @@ namespace proven\files{
                     return $result;
                 }
 
-            $hola = readfood("/home/dax/public_html/tplmnu/files/daymenu.txt",";");
+            // $hola = readfood("/home/dax/public_html/tplmnu/files/menu.txt",";");
             // $drinks = array();
             // foreach($hola as $k){if($k[1] == "dessert"){
             //     array_push($drinks,$k);
             // }};
             // var_dump($drinks);
 
-            #var_dump($hola);
+            // var_dump($hola);
         function getcategory($lista,$param){
             $typefood = array();
             foreach($lista as $k){if($k[1] == $param){
@@ -192,7 +192,15 @@ namespace proven\files{
             }};
             return $typefood;
         }
-        #$comita = getcategory($hola,"drink");
-        #var_dump($comita);
+        function getcategorymenu($lista,$param){
+            $typefood = array();
+            foreach($lista as $k){if($k[1] == $param){
+                $siu = [$k[2],$k[3]];
+                array_push($typefood,$siu);
+            }};
+            return $typefood;
+        }
+        // $comita = getcategorymenu($hola,"drink");
+        // var_dump($comita);
 }
 ?>
