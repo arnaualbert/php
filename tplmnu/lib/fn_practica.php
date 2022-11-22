@@ -177,12 +177,22 @@ namespace proven\files{
                     return $result;
                 }
 
-            // $hola = readAllUserss();
+            $hola = readfood("/home/dax/public_html/tplmnu/files/daymenu.txt",";");
             // $drinks = array();
             // foreach($hola as $k){if($k[1] == "dessert"){
             //     array_push($drinks,$k);
             // }};
             // var_dump($drinks);
-        
+
+            #var_dump($hola);
+        function getcategory($lista,$param){
+            $typefood = array();
+            foreach($lista as $k){if($k[1] == $param){
+                array_push($typefood,$k[2]);
+            }};
+            return $typefood;
+        }
+        #$comita = getcategory($hola,"drink");
+        #var_dump($comita);
 }
 ?>

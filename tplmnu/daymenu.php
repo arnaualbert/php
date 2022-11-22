@@ -5,8 +5,12 @@ $archivo = "./files/daymenu.txt";
 $separador = ";";
 $appetiser = "appetiser";
 //$lista = files\readmenu($archivo,$separador);
-$hola = files\readfood($archivo,$separador);
-
+$listacomida = files\readfood($archivo,$separador);
+$drinks = files\getcategory($listacomida,"drink");
+$desserts = files\getcategory($listacomida,"dessert");
+$maincourse = files\getcategory($listacomida,"maincourse");
+$firstcourse = files\getcategory($listacomida,"firstcourse");
+$appetiser = files\getcategory($listacomida,"appetiser");
 //$lista = files\leer_fichero_completo($archivo,$appetiser);
 ?>
 <!DOCTYPE html>
@@ -33,10 +37,6 @@ $hola = files\readfood($archivo,$separador);
 
 // $hola = files\readAllUserss($archivo,$separador);
 
-$appetiser = array();
-foreach($hola as $k){if($k[1] == "appetiser"){
-    array_push($appetiser,$k[2]);
-}};
 
 echo "<ul>";
 echo "<li> appetiser </li>";
@@ -46,11 +46,6 @@ foreach ($appetiser as $element){
 echo "</ul>";
 
 
-$firstcourse = array();
-foreach($hola as $k){if($k[1] == "firstcourse"){
-    array_push($firstcourse,$k[2]);
-}};
-
 echo "<ul>";
 echo "<li> firstcourse </li>";
 foreach ($firstcourse as $element){
@@ -59,36 +54,21 @@ foreach ($firstcourse as $element){
 echo "</ul>";
 
 
-$desserts = array();
-foreach($hola as $k){if($k[1] == "dessert"){
-    array_push($desserts,$k[2]);
-}};
-
 echo "<ul>";
 echo "<li> Desserts </li>";
-foreach ($desserts as $element){
-        echo "<li>".$element."</li>";
-}
-echo "</ul>";
-
-
-$maincourse = array();
-foreach($hola as $k){if($k[1] == "maincourse"){
-    array_push($maincourse,$k[2]);
-}};
-
-echo "<ul>";
-echo "<li> maincourse </li>";
 foreach ($maincourse as $element){
         echo "<li>".$element."</li>";
 }
 echo "</ul>";
 
 
-$drinks = array();
-foreach($hola as $k){if($k[1] == "drink"){
-    array_push($drinks,$k[2]);
-}};
+echo "<ul>";
+echo "<li> maincourse </li>";
+foreach ($desserts as $element){
+        echo "<li>".$element."</li>";
+}
+echo "</ul>";
+
 
 echo "<ul>";
 echo "<li> Drinks </li>";
