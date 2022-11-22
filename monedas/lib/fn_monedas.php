@@ -29,7 +29,6 @@ function dol_eur($moneda){
     return $resultado;
 };
 
-
 function dol_lib($moneda){
     $resultado = 0.8850775 * $moneda;
     return $resultado;
