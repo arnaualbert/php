@@ -1,0 +1,4 @@
+patatas:5
+tomates:8
+lechuga:3
+cafe:2

@@ -24,7 +24,7 @@ function getAllDrinks(): array {
  * gets the price of the given drink
  * @global array $drinkFare the array to search in
  * @param string $drink the drink name to search
- * @return float the price of the drink
+ * @return float the price of the drink\
  * @throws \Exception if drink is not found
  */
 function getDrinkPrice(string $drink): float {
