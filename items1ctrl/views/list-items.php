@@ -8,7 +8,7 @@
     <?php
     //display list of items in a table.
     $itemList = $params['itemList'];
-    // $params contains variables passed in from the controller.
+    // $params contains variables passed in from the controller.  /// <<<EOT  es para un string multilinea se acaba asi:  EOT;
     foreach ($itemList as $item) {
         echo <<<EOT
         <tr>
