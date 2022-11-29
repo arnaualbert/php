@@ -9,6 +9,7 @@ class UserPersistFileDao {
      */
     public function selectAll(): array{
         // to do
+        return null;
     }
 
 }
