@@ -14,6 +14,7 @@
     <?php
     //display list of items in a table.
     $userList = $params['userList'];
+    $message = $params['message']??'';
     // $params contains variables passed in from the controller.
     foreach ($userList as $elem) {
         echo <<<EOT
@@ -29,6 +30,7 @@ EOT;
     }
     ?>
 </table>
+<?php $message ?>
 <?php else: ?>
 <p class="alert">Permission denied</p>
 <?php endif ?>

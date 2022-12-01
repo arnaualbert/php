@@ -129,7 +129,7 @@ class UserPersistFileDao {
      * searches object in array.
      * @param $list the array to search in.
      * @param $obj the object to search.
-     * @return object position or -1 if not found.
+     * @return int that is the position object position or -1 if not found.
      */
     private function arraySearchIndex(array $list, User $obj): int {
         $index = -1;

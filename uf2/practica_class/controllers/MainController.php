@@ -1,6 +1,8 @@
 <?php
+
 require_once 'lib/ViewLoader.php';
 require_once 'model/Model.php';
+
 class MainController{
     
     private ViewLoader $view;
@@ -66,6 +68,18 @@ class MainController{
     private function doHomePage(){
         $this->view->show('home.php');
     }
+
+    private function doListAllUsers(){
+        $userList = $this->model->searchAllUsers();
+        if(!is_null($userList)){
+            $data['userList'] = $userList;
+            $this->view->show('list-users.php',$data);
+        }else{
+            $data['message'] = 'null data ';
+            $this->view->show('list-users.php',$data);
+        }
+    }
+
 
     private function doListAllProducts(){
         $productList = $this->model->searchAllProducts();
