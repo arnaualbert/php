@@ -29,3 +29,6 @@ EOT;
     }
     ?>
 </table>
+<?php else: ?>
+<p class="alert">Permission denied</p>
+<?php endif ?>
