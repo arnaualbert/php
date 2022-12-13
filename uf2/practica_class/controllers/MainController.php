@@ -2,6 +2,7 @@
 
 require_once 'lib/ViewLoader.php';
 require_once 'model/Model.php';
+require_once 'lib/UserFormValidation.php';
 
 class MainController{
     
@@ -43,9 +44,19 @@ class MainController{
             case 'product/listAll':
                 $this->doListAllProducts();
                 break;
+            case 'user/listAll':
+                $this->doListAllUsers();
+                break;
             case 'product/form':
                 $this->doProductForm();
                 break;
+            case 'user/form':
+                $this->doUserForm();
+                break;
+                //prueba
+            // case 'user/addUser':
+            //     $this->addUser();
+            //     break;
             default:
                 break;
         }
@@ -59,6 +70,9 @@ class MainController{
         switch ($this->action){
             case 'product/add':
                 $this->doAddProduct();
+                break;
+            case 'user/addUser':
+                $this->addUser();
                 break;
             default:
                 break;
@@ -99,9 +113,46 @@ class MainController{
         $this->view->show('productform.php');
     }
 
+    private function doUserForm(){
+        $user = UserFormValidation::getData();
+        $data['user'] = $user;
+        $data['action'] = $this->action;
+        $this->view->show('userform.php',$data);
+    }
+
+    public function addUser(){
+        $user = UserFormValidation::getData();
+        $result = null;
+        if (is_null($user)) {
+            $result = "Error reading user";
+        } else {
+            $numAffected = $this->model->addUser($user);
+            if ($numAffected>0) {
+                $result = "user successfully added";
+            } else {
+                $result = "Error adding user";
+            }            
+        }
+        //pass data to template.
+        $data['result'] = $result;
+        //show the template with the given data.
+        $this->view->show("userform.php", $data);
+
+
+        // if($data['item']==true){
+        //     $this->model->doAddUser($data['item']);
+        // }
+    }
+
+
     private function doAddProduct(){
         //to do
         $data['message'] = 'add product not implemented yet';
         $this->view->show('todo.php',$data);
     }
+
+    // private function doAddUser($id,$username,$password,$role,$name,$surname){
+    //     $usuario = new User($id,$username,$password,$role,$name,$surname);
+    //     $this->userDao->insert($usuario);
+    // }
 }

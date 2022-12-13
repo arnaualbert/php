@@ -1,5 +1,5 @@
-<?php $userrole = $_SESSION['userrole']??null; ?>
-<?php if (!is_null($userrole)): ?>
+<?php //$userrole = $_SESSION['userrole']??null; ?>
+<?php //if (!is_null($userrole)): ?>
 
 <table>
     <h2>List all users</h2>
@@ -15,8 +15,7 @@
     //display list of items in a table.
     $userList = $params['userList'];
     $message = $params['message']??'';
-    // $params contains variables passed in from the controller.
-    foreach ($userList as $elem) {
+    if(count($userList)>0){    foreach ($userList as $elem) {
         echo <<<EOT
         <tr>
             <td>{$elem->getId()}</td>
@@ -27,10 +26,11 @@
             <td>{$elem->getSurname()}</td>
         </tr>               
 EOT;
-    }
+    }}
+    // $params contains variables passed in from the controller.
     ?>
 </table>
-<?php $message ?>
-<?php else: ?>
-<p class="alert">Permission denied</p>
-<?php endif ?>
+<?php echo $message ?>
+<?php //else: ?>
+<!-- <p class="alert">Permission denied</p> -->
+<?php //endif ?>

@@ -15,7 +15,13 @@ class Model{
         $this->userDao = new UserPersistFileDao($this->user_file,$this->delimiter);
     }
 
-
+    public function addUser(User $user){
+        $numAffected = 0;
+        if ($user !== null) {
+            $numAffected = $this->userDao->insert($user);           
+        }
+        return $numAffected;
+    }
 
     /**
      * search all the products in the porducts list or an empty array if not found or an error
