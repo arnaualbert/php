@@ -3,6 +3,8 @@
 require_once 'lib/ViewLoader.php';
 require_once 'model/Model.php';
 require_once 'lib/UserFormValidation.php';
+require_once 'lib/LoginFormValidation.php';
+require_once 'lib/ProductFormValidation.php';
 
 class MainController{
     
@@ -41,6 +43,9 @@ class MainController{
             case 'home':
                 $this->doHomePage();
                 break;
+            case 'login/form':
+                $this->doLoginform();
+                break;
             case 'product/listAll':
                 $this->doListAllProducts();
                 break;
@@ -52,6 +57,9 @@ class MainController{
                 break;
             case 'user/form':
                 $this->doUserForm();
+                break;
+            case 'logout':
+                $this->doLogout();
                 break;
                 //prueba
             // case 'user/addUser':
@@ -68,11 +76,32 @@ class MainController{
             $this->action = filter_input(INPUT_POST,'action');
         }
         switch ($this->action){
-            case 'product/add':
-                $this->doAddProduct();
+            case 'product/addProduct':
+                $this->addProduct();
                 break;
             case 'user/addUser':
                 $this->addUser();
+                break;
+            case 'user/login':
+                $this->doLogin();
+                break;
+            case 'findProduct':
+                $this->findProduct();
+                break;
+            case 'findUser':
+                $this->findUser();
+                break;
+            case 'removeProduct':
+                $this->removeProduct();
+                break;
+            case 'modifyProduct':
+                $this->modifyProduct();
+                break;
+            case 'removeUser':
+                $this->removeUser();
+                break;
+            case 'modifyUser':
+                $this->modifyUser();
                 break;
             default:
                 break;
@@ -82,6 +111,9 @@ class MainController{
     private function doHomePage(){
         $this->view->show('home.php');
     }
+
+
+
 
     private function doListAllUsers(){
         $userList = $this->model->searchAllUsers();
@@ -113,11 +145,42 @@ class MainController{
         $this->view->show('productform.php');
     }
 
+    private function doLogout(){
+        $this->view->show('logout.php');
+    }
+
+    private function doLoginform(){
+        $login = LoginFormValidation::getData();
+        $data['login'] = $login;
+        $this->view->show('login.php',$data);
+    }
+
+    public function doLogin(){
+        $login = LoginFormValidation::getData();
+        $data['login'] = $login;
+        $username = $login[0];
+        $valido = $this->model->validate($data['login']);
+        $data['correcto'] = $valido;
+        if($valido == true){
+            $_SESSION['username'] = $username;
+            // $this->view->show('home.php',$data);
+            header("Location: index.php");
+        }else{
+            var_dump("no");
+            $this->view->show('login.php',$data);
+        }
+        // $data['correcto'] = $valido;
+        // $this->view->show('login.php',$data);
+    }
+
+
+
     private function doUserForm(){
-        $user = UserFormValidation::getData();
-        $data['user'] = $user;
-        $data['action'] = $this->action;
-        $this->view->show('userform.php',$data);
+        // $user = UserFormValidation::getData();
+        // $data['user'] = $user;
+        // $data['action'] = $this->action;
+        // $this->view->show('userform.php',$data);
+        $this->view->show('userform.php');
     }
 
     public function addUser(){
@@ -145,10 +208,154 @@ class MainController{
     }
 
 
-    private function doAddProduct(){
+    private function addProduct(){
         //to do
-        $data['message'] = 'add product not implemented yet';
-        $this->view->show('todo.php',$data);
+        // $data['message'] = 'add product not implemented yet';
+        $product = ProductFormValidation::getData();
+        $result = null;
+        if (is_null($product)) {
+            $result = "Error reading product";
+        } else {
+            $numAffected = $this->model->addProduct($product);
+            if ($numAffected>0) {
+                $result = "product successfully added";
+            } else {
+                $result = "Error adding product";
+            }            
+        }
+        //pass data to template.
+        $data['result'] = $result;
+        // $this->view->show('todo.php',$data);
+        $this->view->show('productform.php',$data);
+    }
+
+
+
+    public function findProduct() {
+        $product = ProductFormValidation::getData();
+        $result = null;
+        if (is_null($product)) {
+            $result = "Error reading product";
+        } else {
+            $productFound = $this->model->searchProductById($product->getId());
+            if (!is_null($productFound)) {
+                //pass data to template.
+                $data['product'] = $productFound;
+                $data['action'] = "change";
+            } else {
+                $result = "Item not found";
+            }            
+        }
+        //pass data to template.
+        $data['result'] = $result;
+        //show the template with the given data.
+        $this->view->show("productform.php", $data);         
+    }
+
+//findUser
+
+
+    public function findUser() {
+        $user = UserFormValidation::getData();
+        $result = null;
+        if (is_null($user)) {
+            $result = "Error reading user";
+        } else {
+            $userFound = $this->model->searchUsertById($user->getId());
+            if (!is_null($userFound)) {
+                //pass data to template.
+                $data['user'] = $userFound;
+                $data['action'] = "change";
+            } else {
+                $result = "user not found";
+            }            
+        }
+        //pass data to template.
+        $data['result'] = $result;
+        //show the template with the given data.
+        $this->view->show("userform.php", $data);         
+    }
+
+
+
+    public function removeProduct() {
+        $product = ProductFormValidation::getData();
+        $result = null;
+        if (is_null($product)) {
+            $result = "Error reading product";
+        } else {
+            $numAffected = $this->model->removeProduct($product);
+            if ($numAffected>0) {
+                $result = "product successfully removed";
+            } else {
+                $result = "Error removing product";
+            }
+        }
+        //pass data to template.
+        $data['result'] = $result;
+        //show the template with the given data.
+        $this->view->show("productform.php", $data);          
+    }
+
+    public function modifyProduct() {
+        $product = ProductFormValidation::getData();
+        $result = null;
+        if (is_null($product)) {
+            $result = "Error reading product";
+        } else {
+            $numAffected = $this->model->modifyProduct($product);
+            if ($numAffected>0) {
+                $result = "product successfully modified";
+            } else {
+                $result = "Error modifying product";
+            }            
+        }
+        //pass data to template.
+        $data['result'] = $result;
+        //show the template with the given data.
+        $this->view->show("productform.php", $data);        
+    }
+
+
+
+
+
+    public function removeUser() {
+        $user = UserFormValidation::getData();
+        $result = null;
+        if (is_null($user)) {
+            $result = "Error reading user";
+        } else {
+            $numAffected = $this->model->removeUser($user);
+            if ($numAffected>0) {
+                $result = "user successfully removed";
+            } else {
+                $result = "Error removing user";
+            }
+        }
+        //pass data to template.
+        $data['result'] = $result;
+        //show the template with the given data.
+        $this->view->show("userform.php", $data);          
+    }
+
+    public function modifyUser() {
+        $user = UserFormValidation::getData();
+        $result = null;
+        if (is_null($user)) {
+            $result = "Error reading user";
+        } else {
+            $numAffected = $this->model->modifyUser($user);
+            if ($numAffected>0) {
+                $result = "user successfully modified";
+            } else {
+                $result = "Error modifying user";
+            }            
+        }
+        //pass data to template.
+        $data['result'] = $result;
+        //show the template with the given data.
+        $this->view->show("userform.php", $data);        
     }
 
     // private function doAddUser($id,$username,$password,$role,$name,$surname){

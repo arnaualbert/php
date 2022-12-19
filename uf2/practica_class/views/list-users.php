@@ -6,28 +6,27 @@
     <tr>
         <th>id</th>
         <th>username</th>
-        <th>password</th>
         <th>role</th>
-        <th>name</th>
-        <th>surname</th>
     </tr>
     <?php
-    //display list of items in a table.
+    //display list of items in a table only if the role is staff or admin.
     $userList = $params['userList'];
     $message = $params['message']??'';
     if(count($userList)>0){    foreach ($userList as $elem) {
+        // if($elem->getRole()=="staff"||$elem->getRole()=="admin"){
         echo <<<EOT
         <tr>
             <td>{$elem->getId()}</td>
             <td>{$elem->getUsername()}</td>
-            <td>{$elem->getPassword()}</td>
             <td>{$elem->getRole()}</td>
-            <td>{$elem->getName()}</td>
-            <td>{$elem->getSurname()}</td>
         </tr>               
-EOT;
+        EOT;
+    //}
     }}
     // $params contains variables passed in from the controller.
+    //<td>{$elem->getPassword()}</td>
+    //<td>{$elem->getName()}</td>
+    //<td>{$elem->getSurname()}</td>
     ?>
 </table>
 <?php echo $message ?>

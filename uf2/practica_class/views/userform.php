@@ -34,19 +34,19 @@ EOT;
 echo <<<EOT
    <form id="item-form" method="post" action="index.php">
     <fieldset>
-        <label for="id">Id: </label><input type="text" name="id" id="id" placeholder="enter id" />
-        <label for="username">Username: </label><input type="text" name="username" id="username" placeholder="enter username"/>
-        <label for="password">Password: </label><input type="text" name="password" id="password" placeholder="enter password" />
-        <label for="role">Role: </label><input type="text" name="role" id="role" placeholder="enter role" />
-        <label for="name">Name: </label><input type="text" name="name" id="name" placeholder="enter name" />
-        <label for="surname">Surname: </label><input type="text" name="surname" id="surname" placeholder="enter surname" />
+        <label for="id">Id: </label><input type="text" name="id" id="id" placeholder="enter id" value="{$user->getId()}"/>
+        <label for="username">Username: </label><input type="text" name="username" id="username" placeholder="enter username" value="{$user->getUsername()}"/>
+        <label for="password">Password: </label><input type="text" name="password" id="password" placeholder="enter password" value="{$user->getPassword()}"/>
+        <label for="role">Role: </label><input type="text" name="role" id="role" placeholder="enter role" value="{$user->getRole()}"/>
+        <label for="name">Name: </label><input type="text" name="name" id="name" placeholder="enter name" value="{$user->getName()}"/>
+        <label for="surname">Surname: </label><input type="text" name="surname" id="surname" placeholder="enter surname" value="{$user->getSurname()}"/>
 
    </fieldset>
     <fieldset>
-        <button type="button" id="findItem" name="findItem" onclick="submitForm(event);return false;">Find</button>
+        <button type="button" id="findUser" name="findUser" onclick="submitForm(event);return false;">Find</button>
         <button type="button" id="user/addUser" name="user/addUser" onclick="submitForm(event);return false;">Add</button>
-        <button type="button" id="modifyItem" name="modifyItem" {$disable} onclick="submitForm(event);return false;">Modify</button>
-        <button type="button" id="removeItem" name="removeItem" {$disable} onclick="submitForm(event);return false;">Remove</button>
+        <button type="button" id="modifyUser" name="modifyUser" {$disable} onclick="submitForm(event);return false;">Modify</button>
+        <button type="button" id="removeUser" name="removeUser" {$disable} onclick="submitForm(event);return false;">Remove</button>
         <input name="action" id="action" hidden="hidden" value="add"/>
     </fieldset>
 </form>
