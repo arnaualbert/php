@@ -3,14 +3,14 @@ require_once './model/Model.php';
 $model = new Model();
 
 
-$encontrado = $model->searchProductById("22");
-var_dump($encontrado);
+// $encontrado = $model->searchProductById("22");
+// var_dump($encontrado);
 
 
 
-// $array_login = array("Arnau2","holas");
-// $allusers = $model->validate($array_login);
-// var_dump($allusers);
+$array_login = array("user3","pass3");
+$allusers = $model->validate($array_login);
+var_dump($allusers[1]);
 
 
 

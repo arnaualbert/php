@@ -155,22 +155,39 @@ class MainController{
         $this->view->show('login.php',$data);
     }
 
+    // public function doLogin(){
+    //     $login = LoginFormValidation::getData();
+    //     $data['login'] = $login;
+    //     $username = $login[0];
+    //     $rol ;
+    //     $valido = $this->model->validate($data['login']);
+    //     $data['correcto'] = $valido;
+    //     if($valido == true){
+    //         $_SESSION["rol"] = $rol;
+    //         $_SESSION['username'] = $username;
+    //         header("Location: index.php");
+    //     }else{
+    //         var_dump("no");
+    //         $this->view->show('login.php',$data);
+    //     }
+    // }
+
+
     public function doLogin(){
         $login = LoginFormValidation::getData();
         $data['login'] = $login;
         $username = $login[0];
         $valido = $this->model->validate($data['login']);
         $data['correcto'] = $valido;
-        if($valido == true){
+        if(!empty($valido)){
+            $rol = $valido[1];
+            $_SESSION["rol"] = $rol;
             $_SESSION['username'] = $username;
-            // $this->view->show('home.php',$data);
             header("Location: index.php");
         }else{
             var_dump("no");
             $this->view->show('login.php',$data);
         }
-        // $data['correcto'] = $valido;
-        // $this->view->show('login.php',$data);
     }
 
 

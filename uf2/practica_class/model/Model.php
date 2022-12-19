@@ -45,21 +45,44 @@ class Model{
      * @param $array  is the key (username) value (password)
      * @return bool if the key and value are correct is true
      */
-        public function validate($array_login): bool{
+        // public function validate($array_login): bool{
+        //     $alltheusers =  $this->userDao->selectAll();
+        //     foreach($alltheusers as $elem){
+        //         $check = array();
+        //         $username = $elem->getUsername();
+        //         $password = $elem->getPassword();
+        //         array_push($check,$username);
+        //         array_push($check,$password);
+        //         if($check == $array_login){
+        //             $existe = true;
+        //             // $_SESSION['username'] = $username;
+        //             // $existe = $_SESSION['username'];
+        //             break;
+        //         }else{
+        //             $existe = false;
+        //         }
+        //         $check = array();
+        //     }
+        //     return $existe;
+        // }
+
+        public function validate($array_login){
             $alltheusers =  $this->userDao->selectAll();
             foreach($alltheusers as $elem){
                 $check = array();
                 $username = $elem->getUsername();
                 $password = $elem->getPassword();
+                $rol = $elem->getRole();
                 array_push($check,$username);
                 array_push($check,$password);
                 if($check == $array_login){
-                    $existe = true;
+                    // $existe = true;
                     // $_SESSION['username'] = $username;
                     // $existe = $_SESSION['username'];
+                    $existe = array($username,$rol);
                     break;
                 }else{
-                    $existe = false;
+                    $existe = array();
                 }
                 $check = array();
             }

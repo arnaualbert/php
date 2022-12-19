@@ -12,9 +12,11 @@
   </head>
   <body>
       <?php
-        include "views/topmenu.html";
+        //include "views/topmenu.html";
+        include "views/topmenu.php";
         if (isset($_SESSION['username'])) {
             echo "Logged user: ".$_SESSION['username'];
+            // echo "Logged user: ".$_SESSION['rol'];
         }
       ?>
       <h2>Store application</h2>
