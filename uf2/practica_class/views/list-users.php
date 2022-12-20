@@ -1,3 +1,4 @@
+<!-- makes a table that list all users -->
 <table>
     <h2>List all users</h2>
     <tr>

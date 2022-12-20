@@ -1,5 +1,5 @@
+<!-- makes a table that list al products -->
 <h2>List of all products</h2>
-<!-- hacer una tabla aqui -->
 <table>
 <tr>
         <th>id</th>
@@ -26,6 +26,4 @@ if(count($prodList)==0){
 }
 ?>
 </table>
-<!-- <td>{$prod->getStock()}</td> -->
-<!-- echo $message;
-// var_dump($prodList); -->
+

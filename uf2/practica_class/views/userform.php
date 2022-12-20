@@ -1,3 +1,4 @@
+<!-- is the form for the users -->
 <?php
 
 $session = session_status() === PHP_SESSION_ACTIVE ? TRUE : FALSE;

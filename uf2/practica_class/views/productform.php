@@ -21,11 +21,6 @@ $session_started = isset($_SESSION['username']);
        $product = new Product(0, "");
    }
    $disable = (($action == "findItem")||($action == "itemForm"))?"disabled":"";
-   if (!is_null($result)) {
-       echo <<<EOT
-       <div><p class="alert">$result</p></div>
-EOT;
-   } 
 echo <<<EOT
    <form id="item-form" method="post" action="index.php">
     <fieldset>
@@ -44,5 +39,10 @@ echo <<<EOT
 </form>
 EOT;
 }
+if (!is_null($result)) {
+    echo <<<EOT
+    <div><p class="alert">$result</p></div>
+EOT;
+} 
 ?>
 
