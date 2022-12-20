@@ -30,9 +30,6 @@ class Model{
         return $numAffected;
     }
 
-
-
-
     public function addProduct(Product $product){
         $numAffected = 0;
         if ($product !== null) {
@@ -42,31 +39,10 @@ class Model{
     }
     /**
      * checks if the username and password are correct
-     * @param $array  is the key (username) value (password)
-     * @return bool if the key and value are correct is true
+     * @param $array_login is the key (username) value (password)
+     * @return array if the key and value are correct is true
      */
-        // public function validate($array_login): bool{
-        //     $alltheusers =  $this->userDao->selectAll();
-        //     foreach($alltheusers as $elem){
-        //         $check = array();
-        //         $username = $elem->getUsername();
-        //         $password = $elem->getPassword();
-        //         array_push($check,$username);
-        //         array_push($check,$password);
-        //         if($check == $array_login){
-        //             $existe = true;
-        //             // $_SESSION['username'] = $username;
-        //             // $existe = $_SESSION['username'];
-        //             break;
-        //         }else{
-        //             $existe = false;
-        //         }
-        //         $check = array();
-        //     }
-        //     return $existe;
-        // }
-
-        public function validate($array_login){
+        public function validate(array $array_login): ?array{
             $alltheusers =  $this->userDao->selectAll();
             foreach($alltheusers as $elem){
                 $check = array();
@@ -76,9 +52,6 @@ class Model{
                 array_push($check,$username);
                 array_push($check,$password);
                 if($check == $array_login){
-                    // $existe = true;
-                    // $_SESSION['username'] = $username;
-                    // $existe = $_SESSION['username'];
                     $existe = array($username,$rol);
                     break;
                 }else{
@@ -108,13 +81,15 @@ class Model{
     }
 
 
-
+    /**search the product by id returns and object of product
+    * @param $id is int id of the product
+    */
     public function searchProductById(int $id): ?Product {  //nullable return.
         $item = $this->productDao->select(new Product($id, null, null, null));
         return $item;
     }
 
-
+    /**search the product by id returns and object of user*/
     public function searchUsertById(int $id): ?User {  //nullable return.
         $item = $this->userDao->select(new User($id, null, null,null, null, null));
         return $item;
@@ -122,6 +97,23 @@ class Model{
     
 
 
+    ///pruebas
+
+    /**search the product by id returns and object of product
+    * @param $id is int id of the product
+    */
+
+    /**search the product by id returns and object of user*/
+    public function searchUserByname(string $username): ?User {  //nullable return.
+        $item = $this->userDao->selectWhereUsername($username);
+        return $item;
+    }
+    
+
+
+    ////fin pruebas
+
+    /**delete the product returns the int of objects deleted*/
     public function removeProduct(Product $product): int {
         $numAffected = 0;
         if ($product != null) {
@@ -130,7 +122,7 @@ class Model{
         return $numAffected;
     }  
 
-
+    /**modify the product returns the int of objects modified*/
     public function modifyProduct(Product $product): int {
         $numAffected = 0;
         if ($product != null) {
@@ -140,7 +132,7 @@ class Model{
     }
     
 
-
+    /**delete the user returns the int of objects deleted*/
     public function removeUser(User $user): int {
         $numAffected = 0;
         if ($user != null) {
@@ -149,7 +141,7 @@ class Model{
         return $numAffected;
     }  
 
-
+    /**modify the user returns the int of objects modified*/
     public function modifyUser(User $user): int {
         $numAffected = 0;
         if ($user != null) {

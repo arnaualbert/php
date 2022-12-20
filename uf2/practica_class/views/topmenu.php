@@ -26,6 +26,7 @@ $session_started = isset($_SESSION['username']);
             echo "<li><a href='index.php?action=product/listAll'>List all products</a></li>";
             echo "<li><a href='index.php?action=product/form'>Product form</a></li>";
             echo "<li><a href='index.php?action=user/listAll'>List all users</a></li>";
+            echo "<li><a href='index.php?action=user/form'>User form</a></li>"; 
             echo "<li><a href='index.php?action=logout'>Logout</a></li>";                   
         };
     }

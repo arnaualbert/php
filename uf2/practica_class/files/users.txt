@@ -8,4 +8,7 @@
 20;Arnaualbert;hola;admin;Arnau;Albert
 12;Victorp;holaa;admin;Victor;Piñana
 23;Alexva;pass23;staff;ALex;Varela
-80;Cardenetes;carde;staff;Luis;Cardenete
+80;Cardenete;carde;staff;Luis;Cardenete
+99;ara;siiiii;staff;aafasf;asdfsafd
+56;vics;af;admin;asdad;asdasd
+13;qweqwe;asdfsdaf;admin;asdsa;sadsad

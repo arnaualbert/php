@@ -9,11 +9,11 @@ class Product {
 
     private int $id; //PK
     private ?string $description; //UNIQUE
-    private ?string $price;
-    private ?string $stock;
+    private ?float $price;
+    private ?int $stock;
 
 
-    public function __construct(int $id, string $description = null, string $price = null, string $stock = null) {
+    public function __construct(int $id, string $description = null, float $price = null, int $stock = null) {
         $this->id = $id;
         $this->description = $description;
         $this->price = $price;
@@ -28,11 +28,11 @@ class Product {
         return $this->description;
     }
 
-    public function getPrice(): ?string {
+    public function getPrice(): ?float {
         return $this->price;
     }
 
-    public function getStock(): ?string {
+    public function getStock(): ?int {
         return $this->stock;
     }
 

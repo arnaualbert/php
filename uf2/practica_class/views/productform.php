@@ -1,9 +1,3 @@
-<!-- <form action="index.php" method='post'>
-<input type="submit" name="action" value="product/add"></input> -->
-<!-- <button></button> -->
-<!-- </form> -->
-
-
 <script type="text/javascript">
 function submitForm(event) {
     var target = event.target;
@@ -15,6 +9,21 @@ function submitForm(event) {
 }
 </script>
 <?php
+
+$session = session_status() === PHP_SESSION_ACTIVE ? TRUE : FALSE;
+
+if(!$session){
+    session_start();
+};
+
+$session_started = isset($_SESSION['username']);
+
+
+
+
+?>
+<?php
+    if($session_started){
    $product = $params['product']??null;  //?? is the 'null coalescing operator'.
    $action = $params['action']??"findItem";
    $result = $params['result']??null;
@@ -44,5 +53,6 @@ echo <<<EOT
     </fieldset>
 </form>
 EOT;
+}
 ?>
 

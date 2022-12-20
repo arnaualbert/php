@@ -149,6 +149,32 @@ class UserPersistFileDao {
     }
 
     /**
+     * selects a user with the given username
+     * @param string $username the username to search
+     * @return User|null user object found or null if not found
+     */
+    public function selectWhereUsername(string $username): ?User {
+        $resultObj = null;
+        //get all data.
+        $objList = $this->selectAll();
+        for ($index = 0; $index < count($objList); $index++) {
+            $elem = $objList[$index];
+            if ($elem->getUsername()===$username) {
+                $resultObj = $elem;  //found!
+                break;
+            }
+        }
+        return $resultObj;
+    }
+
+
+
+
+
+
+
+
+    /**
      * converts array to object
      * @param $fields the fields to convert to object.
      * @return object or null in case of error.

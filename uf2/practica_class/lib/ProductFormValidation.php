@@ -27,12 +27,12 @@ class ProductFormValidation {
         $price = "";
         //retrieve item sent by client.
         if (filter_has_var(INPUT_POST, 'price')) {
-            $price = filter_input(INPUT_POST, 'price'); 
+            $price = filter_input(INPUT_POST, 'price',FILTER_VALIDATE_FLOAT); 
         }
         $stock = "";
         //retrieve item sent by client.
         if (filter_has_var(INPUT_POST, 'stock')) {
-            $stock = filter_input(INPUT_POST, 'stock'); 
+            $stock = filter_input(INPUT_POST, 'stock',FILTER_VALIDATE_INT); 
         }
         //if (!empty($id) && !empty($title) && !empty($content)) { 
             //they exists and they are not empty

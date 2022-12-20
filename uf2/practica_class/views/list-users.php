@@ -1,6 +1,3 @@
-<?php //$userrole = $_SESSION['userrole']??null; ?>
-<?php //if (!is_null($userrole)): ?>
-
 <table>
     <h2>List all users</h2>
     <tr>
@@ -23,13 +20,7 @@
         EOT;
     //}
     }}
-    // $params contains variables passed in from the controller.
-    //<td>{$elem->getPassword()}</td>
-    //<td>{$elem->getName()}</td>
-    //<td>{$elem->getSurname()}</td>
+
     ?>
 </table>
 <?php echo $message ?>
-<?php //else: ?>
-<!-- <p class="alert">Permission denied</p> -->
-<?php //endif ?>
