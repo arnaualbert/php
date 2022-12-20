@@ -5,7 +5,6 @@
         <th>id</th>
         <th>description</th>
         <th>price</th>
-        <th>stock</th>
     </tr>
 <?php
 //to do
@@ -20,7 +19,6 @@ if(count($prodList)==0){
             <td>{$prod->getId()}</td>
             <td>{$prod->getDescription()}</td>
             <td>{$prod->getPrice()}</td>
-            <td>{$prod->getStock()}</td>
         </tr>
         EOT;
     }
@@ -28,5 +26,6 @@ if(count($prodList)==0){
 }
 ?>
 </table>
+<!-- <td>{$prod->getStock()}</td> -->
 <!-- echo $message;
 // var_dump($prodList); -->

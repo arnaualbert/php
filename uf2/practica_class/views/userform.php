@@ -1,13 +1,3 @@
-<script type="text/javascript">
-function submitForm(event) {
-    var target = event.target;
-    var buttonId = target.id;
-    var myForm = document.getElementById('item-form');
-    myForm.action.value = buttonId;
-    myForm.submit();
-    return false;
-}
-</script>
 <?php
 
 $session = session_status() === PHP_SESSION_ACTIVE ? TRUE : FALSE;
@@ -52,11 +42,10 @@ EOT;
                  <label for="surname">Surname: </label><input type="text" name="surname" id="surname" placeholder="enter surname" value="{$user->getSurname()}" />
             </fieldset>
              <fieldset>
-                 <button type="button" id="findUser" name="findUser" onclick="submitForm(event);return false;">Find</button>
-                 <button type="button" id="user/addUser" name="user/addUser" onclick="submitForm(event);return false;" disabled>Add</button>
-                 <button type="button" id="modifyUser" name="modifyUser" {$disable} onclick="submitForm(event);return false;" disabled>Modify</button>
-                 <button type="button" id="removeUser" name="removeUser" {$disable} onclick="submitForm(event);return false;" disabled>Remove</button>
-                 <input name="action" id="action" hidden="hidden" value="add"/>
+                 <button type="submit" id="findUser" name="action" value="findUser">Find</button>
+                 <button type="submit" id="user/addUser" name="action" value="user/addUser">Add</button>
+                 <button type="submit" id="modifyUser" name="action" value="modifyUser" disabled>Modify</button>
+                 <button type="submit" id="removeUser" name="action" value="removeUser" disabled>Remove</button>
              </fieldset>
          </form>
          EOT;   
@@ -77,11 +66,10 @@ EOT;
                  <label for="surname">Surname: </label><input type="text" name="surname" id="surname" placeholder="enter surname" value="{$user->getSurname()}" />
             </fieldset>
              <fieldset>
-                 <button type="button" id="findUser" name="findUser" onclick="submitForm(event);return false;">Find</button>
-                 <button type="button" id="user/addUser" name="user/addUser" onclick="submitForm(event);return false;" >Add</button>
-                 <button type="button" id="modifyUser" name="modifyUser" {$disable} onclick="submitForm(event);return false;" >Modify</button>
-                 <button type="button" id="removeUser" name="removeUser" {$disable} onclick="submitForm(event);return false;">Remove</button>
-                 <input name="action" id="action" hidden="hidden" value="add"/>
+                 <button type="submit" id="findUser" name="action" value="findUser">Find</button>
+                 <button type="submit" id="user/addUser" name="action" value="user/addUser">Add</button>
+                 <button type="submit" id="modifyUser" name="action" value="modifyUser" {$disable} >Modify</button>
+                 <button type="submit" id="removeUser" name="action" value="removeUser" {$disable}>Remove</button>
              </fieldset>
          </form>
          EOT;           

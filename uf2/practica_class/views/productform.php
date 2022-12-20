@@ -1,13 +1,3 @@
-<script type="text/javascript">
-function submitForm(event) {
-    var target = event.target;
-    var buttonId = target.id;
-    var myForm = document.getElementById('item-form');
-    myForm.action.value = buttonId;
-    myForm.submit();
-    return false;
-}
-</script>
 <?php
 
 $session = session_status() === PHP_SESSION_ACTIVE ? TRUE : FALSE;
@@ -45,11 +35,11 @@ echo <<<EOT
         <label for="stock">stock: </label><input type="text" name="stock" id="stock" placeholder="enter stock"  value="{$product->getStock()}"/>
    </fieldset>
     <fieldset>
-        <button type="button" id="findProduct" name="findProduct" onclick="submitForm(event);return false;">Find</button>
-        <button type="button" id="product/addProduct" name="product/addProduct" onclick="submitForm(event);return false;">Add</button>
-        <button type="button" id="modifyProduct" name="modifyProduct" {$disable} onclick="submitForm(event);return false;">Modify</button>
-        <button type="button" id="removeProduct" name="removeProduct" {$disable} onclick="submitForm(event);return false;">Remove</button>
-        <input name="action" id="action" hidden="hidden" value="add"/>
+        <button type="submit" id="findProduct" name="action" value="findProduct">Find</button>
+        <button type="submit" id="product/addProduct" name="action" value="product/addProduct">Add</button>
+        <button type="submit" id="modifyProduct" name="action" value="modifyProduct" {$disable}>Modify</button>
+        <button type="submit" id="removeProduct" name="action" value="removeProduct" {$disable}>Remove</button>
+
     </fieldset>
 </form>
 EOT;
