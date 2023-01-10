@@ -26,6 +26,6 @@ class User{
     }
 
     public function __toString() {
-        return sprintf("%s{[username:%s][password:%d]}", get_class($this), $this->username, $this->password);
+        return sprintf("%s{[username:%s][password:%s]}", get_class($this), $this->username, $this->password);
     }
 }

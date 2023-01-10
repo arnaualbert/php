@@ -1,8 +1,15 @@
 <?php
-
-$destination = "uploads/" . basename($_FILES["filename"]["name"]);
-
+$date = new DateTime();
+$result = $date->format('Y-m-d H:i:s');
+// $destination = "uploads/" . basename($_FILES["filename"]["name"]);
+$destination = "uploads/" . $result . ".jpeg";
 move_uploaded_file($_FILES['filename']['tmp_name'],$destination);
+// $date = new DateTime();
+// $result = $date->format('Y-m-d H:i:s');
+
+
+
+
 
 ?>
 <!DOCTYPE html>
