@@ -37,6 +37,7 @@ class UserPdoDbDao {
             $success = $stmt->execute();
             if ($success) {
                 $stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'user\model\User');
+                //$stmt->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, User::class); // esta tambien sirve igual que la linea de arriba
                 $result = $stmt->fetch();  //User|false
                 if ($result !== \false) {
                     $data = $result;
