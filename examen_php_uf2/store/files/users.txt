@@ -1,0 +1,15 @@
+username;password;age
+user1;pass1;11
+user2;pass2;22
+user3;pass3;33
+user4;pass4;44
+user5;pass5;55
+user6;pass6;66
+user9;pass9;77arnau;albert;19
+arnau;albert;19
+pep;tikitaka;50
+marc;markez;28pep;tikitaka;12
+asds;asdasd;123
+andrea;cule;22
+hola;adios;86
+rosco;pasa;23
