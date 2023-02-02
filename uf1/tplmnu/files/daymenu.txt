@@ -1,0 +1,11 @@
+id;category;name
+1;appetiser;rollitos
+2;appetiser;brochetas
+3;firstcourse;tartar
+4;firstcourse;sopa
+5;maincourse;cachopo
+6;maincourse;tortillas
+7;dessert;helado
+8;dessert;coulant
+9;drink;vino
+10;drink;agua

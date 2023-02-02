@@ -1,0 +1,11 @@
+id;category;name;price
+1;appetiser;guacamoe;2€
+2;appetiser;hummus;3€
+3;firstcourse;salmon;12€
+4;firstcourse;magret;15€
+5;maincourse;escalopa;20€
+6;maincourse;filete;25€
+7;dessert;helado;8€
+8;dessert;coulant;8€
+9;drink;vino;15€
+10;drink;agua;5€

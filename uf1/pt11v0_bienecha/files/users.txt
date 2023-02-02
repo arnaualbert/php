@@ -1,0 +1,8 @@
+alex;1234;admin;alex;varela
+arnau;1234;staff;arnau;albert
+luis;1234;registered;luis;cardenete
+aymane;1234;staff;aymane;elhambali
+xavi;1234;registered;xavi;llobet
+denys;1234;registered;denys;chorny
+user2;pass1;registered;name1;surname1
+aaa;aaa;registered;aaa;aaa
