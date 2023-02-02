@@ -10,7 +10,13 @@ if (isset($_SESSION['userrole'])) {
         switch ($userrole) {
             case "admin":
                 $menupath = "views/admin/adminmenu.php";
-                break;    
+                break; 
+            case "staff":
+                $menupath = "view/admin/staffmenu.php";
+                break;
+            default:
+                $menupath = "views/mainmenu";
+
         }
     }
 }
