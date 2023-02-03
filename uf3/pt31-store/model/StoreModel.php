@@ -165,6 +165,7 @@ class StoreModel {
         $warepro = new WarehouseProductDao();
         return $warepro->selectWhere("warehouse_id",$id);
     }
+
     // public function doeverything($id){
     public function getproductscodes($id){
         $s = $this->findcodeandproduct($id);
@@ -186,10 +187,37 @@ class StoreModel {
         return $codes;
     }
 
-
+    
     public function findWarehouseProductByProduct_id(string $id): array{
         $dbHelper = new WarehouseProductDao();
         return $dbHelper->selectWhere("product_id", $id);
+    }
+
+    public function findcodeandwarehouse($id){
+        $warehouse = new WarehouseDao();
+        $product = new ProductDao();
+        $warepro = new WarehouseProductDao();
+        return $warepro->selectWhere("product_id",$id);
+    }
+
+    public function getwarehousecodes($id){
+        $s = $this->findcodeandwarehouse($id);
+        $idwarehouse = [];
+        $idproducts = [];
+        $codes = [];
+        if(count($s)>0){
+        $idw = $s[0]->getProductid();
+        array_push($idwarehouse,$idw);
+        foreach($s as $p){
+            $idp = $p->getWarehouseid();
+            array_push($idproducts,$idp);
+        }
+        foreach($idproducts as $idproduct){
+            $s = $this->findWarehouseById($idproduct);
+            $code = $s->getCode();
+            array_push($codes,$code);
+        }}else{$codes = [];}
+        return $codes;
     }
 
     public function findUserByUsernamePassword(string $username,string $password): ?User{

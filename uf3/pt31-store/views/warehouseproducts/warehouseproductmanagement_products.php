@@ -29,15 +29,23 @@
 // var_dump($params);
 $list = $params['list'] ?? null;
 $codes = $params['codes'] ?? null;
+$product = $params['product']?? null;
 if (isset($list)) {
     echo <<<EOT
     <form id="user-form" method="post" action="index.php">
         <table class="table table-sm table-bordered table-striped table-hover caption-top table-responsive-sm">
-        <caption>List of Warehouse Products</caption>
+        <caption>List of Stock</caption>
+        <div class="container d-flex align-items-center justify-content-center">
+        <ul>
+        <li>Id: {$product->getId()}</li>
+        <li>Code: {$product->getCode()}</li>
+        <li>Description: {$product->getDescription()}</li>
+        <li>Price: {$product->getPrice()}€</li>
+        </ul>
+        </div>
         <thead class='table-dark'>
         <tr>
             <th>Warehouse ID</th>
-            <th>Product Id</th>
             <th>Stocks</th>
         </tr>
         </thead>
@@ -49,7 +57,7 @@ EOT;
     //<td><form method='post' action=\"index.php\"><button type='submit' name='action' value='category/remove'>Remove</button></form></td>
     // var_dump($list[0]->getWarehouseid());
     // var_dump($list);
-    var_dump($codes);
+    // var_dump($codes);
     foreach ($list as $index => $elem ) {
         echo <<<EOT
         <style>
@@ -61,8 +69,7 @@ EOT;
       <input name="code" id="code" value={$elem->getProductid()}>
       <input name="address" id="address" value={$elem->getStock()}>
             <tr>
-                <td>{$elem->getWarehouseid()}</td>               
-                <td>{$elem->getProductid()}</td>
+                <td>{$codes[$index]}</td>               
                 <td>{$elem->getStock()}</td>
             </tr>  
             </form>             

@@ -566,9 +566,11 @@ class MainController {
             // $result = $this->model->findProductByCategoryId($idtoSearch);
             $result = $this->model->findWarehouseProductByProduct_id($idtoSearch);
             //new (codes)
-            // $codes = $this->model->doeverything($idtoSearch);
+            $codes = $this->model->getwarehousecodes($idtoSearch);
+            // product info
+            $product = $this->model->findProductById($idtoSearch);
             //pass list to view and show.
-            $this->view->show("warehouseproducts/warehouseproductmanagement_products.php", ['list' => $result]);   
+            $this->view->show("warehouseproducts/warehouseproductmanagement_products.php", ['list' => $result,'codes' => $codes,'product' => $product]);   
         }  else {
             //pass information message to view and show.
             $this->view->show("warehouseproducts/warehouseproductmanagement_products.php", ['message' => "No data found"]);   
