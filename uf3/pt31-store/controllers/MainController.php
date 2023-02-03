@@ -266,7 +266,7 @@ class MainController {
              }
              $data['mode'] = $mode;
         }
-        $this->view->show("user/userdetail.php", $data);  //initial prototype version.
+        $this->view->show("user/userdetail.php", $data);  
     }
     /**
      * add the user to the database
@@ -554,26 +554,33 @@ class MainController {
         }
     }
 
+        /* ============== Login and logout ============== */
+
+    /**
+     * this function do the login
+     * get the username and password from the login form
+     */
     public function doLogin(){
+        // get username and password from the login form
         $username = filter_input(INPUT_POST,'username');
         $password = filter_input(INPUT_POST,'password');
+        // search for the user in the database 
         $u = $this->model->findUserByUsernamePassword($username,$password);
-        //var_dump(!is_null($u));
+        // if the user is found create a session with the username and the role and redirect to the index page
         if(!is_null($u)){
-            // var_dump('logged');
             $_SESSION['userrole'] = $u->getRole();
             $_SESSION['username'] = $u->getFirstname();
             header("Location: index.php");
-            // header($this->view->show('home.php'));
-            // var_dump($u->getRole());
-            // header("Location: /home/dax/public_html/uf3/pt31-store/views/home.php");
+        // if the user is not found display the login form with the error message
         }else{
-            // var_dump('not logged');
             $this->view->show("login/loginform.php",['message' => 'Login incorrecre']);
         }
         
     }
-
+    /**
+     * this function do the logout
+     * delete the session and redirect to the index page
+     */
     public function doLogout(){  //user valid
         session_destroy();
         header("Location: index.php");
