@@ -29,6 +29,7 @@
 // var_dump($params);
 $list = $params['list'] ?? null;
 $codes = $params['codes'] ?? null;
+$warehouse = $params['warehouse']?? null;
 if (isset($list)) {
     echo <<<EOT
     <form id="user-form" method="post" action="index.php">

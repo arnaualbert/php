@@ -165,7 +165,8 @@ class StoreModel {
         $warepro = new WarehouseProductDao();
         return $warepro->selectWhere("warehouse_id",$id);
     }
-    public function doeverything($id){
+    // public function doeverything($id){
+    public function getproductscodes($id){
         $s = $this->findcodeandproduct($id);
         $idwarehouse = [];
         $idproducts = [];

@@ -549,7 +549,7 @@ class MainController {
             // $result = $this->model->findProductByCategoryId($idtoSearch);
             $result = $this->model->findWarehouseProductByWarehouse_id($idtoSearch);
             //new (codes)
-            $codes = $this->model->doeverything($idtoSearch);
+            $codes = $this->model->getproductscodes($idtoSearch);
             //pass list to view and show.
             $this->view->show("warehouseproducts/warehouseproductmanagement_warehouse.php", ['list' => $result,'codes' => $codes]);   
         }  else {
