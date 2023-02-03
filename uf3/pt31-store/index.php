@@ -19,7 +19,7 @@
       <?php
         include "loadnavbar.php"; 
         if (isset($_SESSION['username'])) {
-          echo "Logged user: ".$_SESSION['username'];
+          echo "Logged user: ".$_SESSION['username'].' '.$_SESSION['userlname'];
       } //navigation bar.
       ?>
       <?php

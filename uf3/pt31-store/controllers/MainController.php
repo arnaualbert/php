@@ -570,6 +570,7 @@ class MainController {
         if(!is_null($u)){
             $_SESSION['userrole'] = $u->getRole();
             $_SESSION['username'] = $u->getFirstname();
+            $_SESSION['userlname'] = $u->getLastname();
             header("Location: index.php");
         // if the user is not found display the login form with the error message
         }else{
