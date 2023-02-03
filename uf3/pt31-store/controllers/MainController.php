@@ -530,10 +530,10 @@ class MainController {
             //new (codes)
             $codes = $this->model->doeverything($idtoSearch);
             //pass list to view and show.
-            $this->view->show("warehouseproducts/warehouseproductmanagement.php", ['list' => $result,'codes' => $codes]);   
+            $this->view->show("warehouseproducts/warehouseproductmanagement_warehouse.php", ['list' => $result,'codes' => $codes]);   
         }  else {
             //pass information message to view and show.
-            $this->view->show("warehouseproducts/warehouseproductmanagement.php", ['message' => "No data found"]);   
+            $this->view->show("warehouseproducts/warehouseproductmanagement_warehouse.php", ['message' => "No data found"]);   
         }
     }
     
@@ -545,12 +545,12 @@ class MainController {
             // $result = $this->model->findProductByCategoryId($idtoSearch);
             $result = $this->model->findWarehouseProductByProduct_id($idtoSearch);
             //new (codes)
-            $codes = $this->model->doeverything($idtoSearch);
+            // $codes = $this->model->doeverything($idtoSearch);
             //pass list to view and show.
-            $this->view->show("warehouseproducts/warehouseproductmanagement.php", ['list' => $result,'codes' => $codes]);   
+            $this->view->show("warehouseproducts/warehouseproductmanagement_products.php", ['list' => $result]);   
         }  else {
             //pass information message to view and show.
-            $this->view->show("warehouseproducts/warehouseproductmanagement.php", ['message' => "No data found"]);   
+            $this->view->show("warehouseproducts/warehouseproductmanagement_products.php", ['message' => "No data found"]);   
         }
     }
 
