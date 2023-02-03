@@ -321,13 +321,15 @@ class MainController {
      * displays category management page.
      */
     public function doCategoryMng() {
-        //TODO
-        //get all category.
+        //get all the categories.
         $result = $this->model->findAllCategories();
+        // show the list of categories 
         $this->view->show("category/categorymanage.php",['list' => $result]);
-        // $this->view->show("message.php", ['message' => 'Not implemented yet!']);
     }
     //echo por arnau
+    /**
+     * displays category edit page.
+     */
     public function doCategoryEditForm(string $mode) {
         $data = array();
         if ($mode != 'category/add') {
@@ -343,7 +345,9 @@ class MainController {
         }
         $this->view->show("category/categorydetail.php", $data);  //initial prototype version.
     }
-
+    /**
+     * add a new category to the database.
+     */
     public function doCategoryAdd() {
         //get category data from form and validate
         $category = Validator::validateCategory(INPUT_POST);
@@ -357,11 +361,13 @@ class MainController {
             $this->view->show("category/categorydetail.php", ['mode' => 'add', 'message' => $message]);
         }
     }
-
+    /**
+     * modify a category in the database.
+     */
     public function doCategoryModify() {
         //get category data from form and validate
         $category = Validator::validateCategory(INPUT_POST);
-        //add category to database
+        //modify the category to database
         if (!is_null($category)) {
             $result = $this->model->modifyCategory($category);
             $message = ($result > 0) ? "Successfully modified":"Error modifying";
@@ -371,11 +377,13 @@ class MainController {
             $this->view->show("category/categorydetail.php", ['mode' => 'add', 'message' => $message]);
         }
     }    
-
+    /**
+     * remove a category from the database.
+     */
     public function doCategoryRemove() {
         //get category data from form and validate
         $category = Validator::validateCategory(INPUT_POST);
-        //add category to database
+        //remove the category from the database
         if (!is_null($category)) {
             $result = $this->model->removeCategory($category);
             $message = ($result > 0) ? "Successfully removed":"Error removing";
@@ -392,18 +400,18 @@ class MainController {
      * displays product management page.
      */
     public function doProductMng() {
-        //TODO
         $result = $this->model->findAllProducts();
         $this->view->show("product/productmanage.php",['list' => $result]);
-        // $this->view->show("message.php", ['message' => 'Not implemented yet!']);
     }
 
-
+    /**
+     * list all the products by their category id.
+     */
     public function doListProductsByCategoryId() {
-        //get role sent from client to search.
+        //get the id to search for
         $idtoSearch = \filter_input(INPUT_POST, "search");
         if ($idtoSearch !== false) {
-            //get users with that role.
+            //get the products searched by the category id
             // $result = $this->model->findProductByCategoryId($idtoSearch);
             $result = $this->model->findProductByCategoryCode($idtoSearch);
             //pass list to view and show.
@@ -413,11 +421,13 @@ class MainController {
             $this->view->show("product/productmanage.php", ['message' => "No data found"]);   
         }
     }
-
+    /**
+     * show the product edit form
+     */
     public function doProductEditForm(string $mode) {
         $data = array();
         if ($mode != 'product/add') {
-            //fetch data for selected user
+            //search the product by the id
             $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
             if (($id !== false) && (!is_null($id))) {
                 $product = $this->model->findProductById($id);
@@ -427,13 +437,15 @@ class MainController {
              }
              $data['mode'] = $mode;
         }
-        $this->view->show("product/productdetail.php", $data);  //initial prototype version.
+        $this->view->show("product/productdetail.php", $data);  
     }
-
+    /**
+     *  add a new product to the database
+     */
     public function doProductAdd() {
-        //get category data from form and validate
+        //get product data from form and validate
         $product = Validator::validateProduct(INPUT_POST);
-        //add category to database
+        //add product to database
         if (!is_null($product)) {
             $result = $this->model->addProduct($product);
             $message = ($result > 0) ? "Successfully added":"Error adding";
@@ -445,9 +457,9 @@ class MainController {
     }
 
     public function doProductModify() {
-        //get category data from form and validate
+        //get product data from form and validate
         $product = Validator::validateProduct(INPUT_POST);
-        //add category to database
+        //modify product to database
         if (!is_null($product)) {
             $result = $this->model->modifyProducts($product);
             $message = ($result > 0) ? "Successfully modified":"Error modifying";
@@ -457,11 +469,13 @@ class MainController {
             $this->view->show("product/productdetail.php", ['mode' => 'add', 'message' => $message]);
         }
     }    
-
+    /**
+     * remove product from the database
+     */
     public function doProductRemove() {
         //get category data from form and validate
         $product = Validator::validateProduct(INPUT_POST);
-        //add category to database
+        //remove product to database
         if (!is_null($product)) {
             $result = $this->model->removeProduct($product);
             $message = ($result > 0) ? "Successfully removed":"Error removing";
@@ -472,17 +486,18 @@ class MainController {
         }
     } 
 
+        /* ============== WAREHOUSE MANAGEMENT CONTROL METHODS ============== */
 
     /**
-     * displays product management page.
+     * displays warehouse management page.
      */
     public function doWarehouseMng() {
-        //TODO
-        // $this->view->show("message.php", ['message' => 'Not implemented yet!']);
         $result = $this->model->findAllWarehouse();
         $this->view->show("warehouse/warehousemanage.php",['list' => $result]);
     }
-
+    /**
+     * show the warehouse edit form
+     */
     public function doWarehouseEditForm(string $mode) {
         $data = array();
         if ($mode != 'warehouse/add') {
@@ -496,13 +511,15 @@ class MainController {
              }
              $data['mode'] = $mode;
         }
-        $this->view->show("warehouse/warehousedetail.php", $data);  //initial prototype version.
+        $this->view->show("warehouse/warehousedetail.php", $data); 
     }
-
+    /**
+     * modify the warehouse 
+     */
     public function doWarehouseModify() {
-        //get category data from form and validate
+        //get warehouse data from form and validate
         $warehouse = Validator::validateWarehouse(INPUT_POST);
-        //add category to database
+        //modify warehouse to database
         if (!is_null($warehouse)) {
             $result = $this->model->modifyWarehouse($warehouse);
             $message = ($result > 0) ? "Successfully modified":"Error modifying";
@@ -513,13 +530,17 @@ class MainController {
         }
     } 
 
-    //warehouseproducts
+    /* ============== WAREHOUSEPRODUCTS MANAGEMENT CONTROL METHODS ============== */
 
+    /**
+     * displays warehouse products management page.
+     */
     public function doWarehouseProductsMng(){
         $result = $this->model->findAllWarehouseProduct();
         $this->view->show("warehouseproducts/warehouseproductmanagement.php",['list'=>$result]);
     }
 
+    
     public function doListWarehouseProductsByIdWarehouse_id(){
         // $idtoSearch = \filter_input(INPUT_POST, "search");
         $idtoSearch = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -585,5 +606,5 @@ class MainController {
     public function doLogout(){  //user valid
         session_destroy();
         header("Location: index.php");
-}
+    }
 }
