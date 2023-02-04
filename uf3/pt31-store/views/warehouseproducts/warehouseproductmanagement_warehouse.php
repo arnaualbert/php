@@ -35,9 +35,11 @@ if (isset($list)) {
     <form id="user-form" method="post" action="index.php">
         <table class="table table-sm table-bordered table-striped table-hover caption-top table-responsive-sm">
         <caption>List of Warehouse Products</caption>
+        <div class="container d-flex align-items-center justify-content-center">
+        <h3>{$warehouse->getCode()}</h3>
+        </div>
         <thead class='table-dark'>
         <tr>
-            <th>Warehouse ID</th>
             <th>Product Id</th>
             <th>Stocks</th>
         </tr>
@@ -50,7 +52,6 @@ EOT;
     //<td><form method='post' action=\"index.php\"><button type='submit' name='action' value='category/remove'>Remove</button></form></td>
     // var_dump($list[0]->getWarehouseid());
     // var_dump($list);
-    var_dump($codes);
     foreach ($list as $index => $elem ) {
         echo <<<EOT
         <style>
@@ -61,8 +62,7 @@ EOT;
       <input name="id" id="id" value={$elem->getWarehouseid()}>
       <input name="code" id="code" value={$elem->getProductid()}>
       <input name="address" id="address" value={$elem->getStock()}>
-            <tr>
-                <td>{$elem->getWarehouseid()}</td>               
+            <tr>             
                 <td>{$codes[$index]}</td>
                 <td>{$elem->getStock()}</td>
             </tr>  
