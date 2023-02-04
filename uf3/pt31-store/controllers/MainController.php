@@ -548,7 +548,6 @@ class MainController {
         $idtoSearch = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($idtoSearch !== false) {
             //get users with that role.
-            // $result = $this->model->findProductByCategoryId($idtoSearch);
             $result = $this->model->findWarehouseProductByWarehouse_id($idtoSearch);
             //new (codes)
             $codes = $this->model->getproductscodes($idtoSearch);
