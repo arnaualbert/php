@@ -10,7 +10,7 @@ use proven\store\model\persist\WarehouseDao;
 use proven\store\model\Warehouse;
 
 $dao = new WarehouseDao();
-echo 'select all Product';
+echo 'select all Warehouse';
 echo "<br>";
 debug\Debug::display($dao->selectAll());
 echo "<br>";
