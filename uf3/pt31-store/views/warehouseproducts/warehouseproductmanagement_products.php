@@ -30,6 +30,9 @@
 $list = $params['list'] ?? null;
 $codes = $params['codes'] ?? null;
 $product = $params['product']?? null;
+$warehouses = $params['warehouses']?? null;
+$wares = [];
+$sotks = [];
 if (isset($list)) {
     echo <<<EOT
     <form id="user-form" method="post" action="index.php">
@@ -45,7 +48,7 @@ if (isset($list)) {
         </div>
         <thead class='table-dark'>
         <tr>
-            <th>Warehouse ID</th>
+            <th>Warehouse Code</th>
             <th>Stocks</th>
         </tr>
         </thead>
@@ -58,23 +61,60 @@ EOT;
     // var_dump($list[0]->getWarehouseid());
     // var_dump($list);
     // var_dump($codes);
+    /////////
+  //   echo <<<EOT
+  //   <style>
+  //   input {
+  //     display: none;
+  //   }
+  // </style>
+  // <input name="id" id="id" value={$elem->getWarehouseid()}>
+  // <input name="code" id="code" value={$elem->getProductid()}>
+  // <input name="address" id="address" value={$elem->getStock()}>
+  //       <tr>
+  //           <td>{$codes[$index]}</td>               
+  //           <td>{$elem->getStock()}</td>
+  //       </tr>  
+  //       </form>             
+  // EOT;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     foreach ($list as $index => $elem ) {
-        echo <<<EOT
-        <style>
-        input {
-          display: none;
-        }
-      </style>
-      <input name="id" id="id" value={$elem->getWarehouseid()}>
-      <input name="code" id="code" value={$elem->getProductid()}>
-      <input name="address" id="address" value={$elem->getStock()}>
-            <tr>
-                <td>{$codes[$index]}</td>               
-                <td>{$elem->getStock()}</td>
-            </tr>  
-            </form>             
-EOT;
+    echo <<<EOT
+    <style>
+    input {
+      display: none;
     }
+  </style>
+  <input name="id" id="id" value={$elem->getWarehouseid()}>
+  <input name="code" id="code" value={$elem->getProductid()}>
+  <input name="address" id="address" value={$elem->getStock()}>
+        <tr>
+            <td>{$codes[$index]}</td>               
+            <td>{$elem->getStock()}</td>
+        </tr>  
+        </form>             
+  EOT;
+    }
+ /////////////////////////////////////////////////////////////////////////////////////////
+  // foreach ($list as $index => $elem ) {
+  //   echo <<<EOT
+
+  //       <tr>
+  //           <td>{$codes[$index]}</td>               
+  //           <td>{$elem->getStock()}</td>
+  //       </tr>    
+  //   EOT;
+  // }
+  // foreach ($warehouses as $index => $w){
+  //   if($codes[$index] != $w->getCode()){
+  //     echo <<<EOT
+  //       <tr>
+  //           <td>{$w->getCode()}</td>               
+  //           <td>0</td>
+  //       </tr>
+  //     EOT;
+  //   }
+  // }
     echo "</tbody>";
     echo "</table>";
     echo "<div class='alert alert-info' role='alert'>";
