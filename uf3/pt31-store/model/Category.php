@@ -39,7 +39,7 @@ class Category {
     }
 
     public function __toString() {
-        return sprintf("User{[id=%d][code=%s][description=%s]}",
+        return sprintf("Category{[id=%d][code=%s][description=%s]}",
                 $this->id, $this->code, $this->description);
     }
 

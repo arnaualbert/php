@@ -27,5 +27,10 @@ class Debug {
         var_dump($data);
         echo '</pre>';
     }
-
+    /**
+     * print object
+     */
+    static function objectprint($object){
+        echo $object-> __toString();
+    }
 }
