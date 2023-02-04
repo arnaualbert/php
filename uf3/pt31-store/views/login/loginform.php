@@ -7,13 +7,15 @@
 <strong><?php echo $params['message']; ?></strong>
 </div>
 <?php endif ?>
+<div class="container d-flex align-items-center justify-content-center">
 <form  method="post" action="index.php">
     <fieldset>
-        <label for="username">Username: </label><input type="text" name="username" id="username" placeholder="enter username"/>
-        <label for="password">Password: </label><input type="text" name="password" id="password" placeholder="enter password" />
+        <label  for="username">Username: </label><input type="text" name="username" id="username" class="form-control" placeholder="enter username"/>
+        <label for="password">Password: </label><input type="text" name="password" id="password" class="form-control" placeholder="enter password" />
    </fieldset>
     <fieldset>
-        <button type="submit" name="action" value="login">Login</button>
+        <button type="submit" class="mt-2 btn btn-secondary" name="action" value="login">Login</button>
     </fieldset>
 </form>
+</div>
 <?php
