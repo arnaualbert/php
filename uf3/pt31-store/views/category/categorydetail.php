@@ -18,7 +18,7 @@ if (isset($params['mode'])) {
 $category = $params['category'] ?? new Category();
 echo "<form method='post' action=\"index.php\">";
 echo proven\lib\views\Renderer::renderCategoryFields($category);
-echo "<button type='submit' name='action' value='category/add' $addDisable>Add</button>";
+//echo "<button type='submit' name='action' value='category/add' $addDisable>Add</button>";
 echo "<button type='submit' name='action' value='category/modify' $editDisable>Modify</button>";
 //echo "<button type='submit' name='action' value='category/remove' $editDisable>Remove</button>";
 echo "</form>";

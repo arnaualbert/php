@@ -478,11 +478,13 @@ class MainController {
         //remove product to database
         if (!is_null($product)) {
             $result = $this->model->removeProduct($product);
+            $list = $this->model->findAllProducts();
             $message = ($result > 0) ? "Successfully removed":"Error removing";
-            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message]);
+            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         } else {
+            $list = $this->model->findAllProducts();
             $message = "Invalid data";
-            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message]);
+            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         }
     } 
 
