@@ -16,6 +16,12 @@ if (isset($list)) {
         <div class="container d-flex align-items-center justify-content-center">
         <h3>{$warehouse->getCode()}</h3>
         </div>
+        <div class="container d-flex align-items-center justify-content-center">
+        <ul>
+        <li>Id: {$warehouse->getId()}</li>
+        <li>Address: {$warehouse->getAddress()}</li>
+        </ul>
+        </div>
         <thead class='table-dark'>
         <tr>
             <th>Product Id</th>
