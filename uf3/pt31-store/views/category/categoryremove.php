@@ -18,8 +18,7 @@ if (isset($params['mode'])) {
 $category = $params['category'] ?? new Category();
 echo "<form method='post' action=\"index.php\">";
 echo "Do you want to remove this category?";
+echo "<p class='text-danger'>IMPORTANT: deleting this category will eliminate all the products that have this category and all the stock of the product and cannot be recovered</p>";
 echo proven\lib\views\Renderer::renderCategoryFieldsDelete($category);
-//echo "<button type='submit' name='action' value='category/add' $addDisable>Add</button>";
-// echo "<button type='submit' name='action' value='category/modify' $editDisable>Modify</button>";
 echo "<button type='submit' name='action' value='category/remove' $editDisable>Remove</button>";
 echo "</form>";
