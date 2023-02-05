@@ -542,7 +542,9 @@ class MainController {
         $this->view->show("warehouseproducts/warehouseproductmanagement.php",['list'=>$result]);
     }
 
-    
+    /**
+     * list all the warehouseproducts
+     */
     public function doListWarehouseProductsByIdWarehouse_id(){
         // $idtoSearch = \filter_input(INPUT_POST, "search");
         $idtoSearch = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -560,7 +562,9 @@ class MainController {
             $this->view->show("warehouseproducts/warehouseproductmanagement_warehouse.php", ['message' => "No data found"]);   
         }
     }
-    
+    /**
+     * list all the warehouseproducts that have the product
+     */
     public function doListWarehouseProductsByProduct_id(){
         // $idtoSearch = \filter_input(INPUT_POST, "search");
         $idtoSearch = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
