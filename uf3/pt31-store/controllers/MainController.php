@@ -496,25 +496,31 @@ class MainController {
         //add product to database
         if (!is_null($product)) {
             $result = $this->model->addProduct($product);
+            $list = $this->model->findAllProducts();
             $message = ($result > 0) ? "Successfully added":"Error adding";
-            $this->view->show("product/productdetail.php", ['mode' => 'add', 'message' => $message]);
+            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         } else {
             $message = "Invalid data";
-            $this->view->show("product/productdetail.php", ['mode' => 'add', 'message' => $message]);
+            $list = $this->model->findAllProducts();
+            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         }
     }
-
+    /**
+     * modify an existing product
+     */
     public function doProductModify() {
         //get product data from form and validate
         $product = Validator::validateProduct(INPUT_POST);
         //modify product to database
         if (!is_null($product)) {
             $result = $this->model->modifyProducts($product);
+            $list = $this->model->findAllProducts();
             $message = ($result > 0) ? "Successfully modified":"Error modifying";
-            $this->view->show("product/productdetail.php", ['mode' => 'add', 'message' => $message]);
+            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         } else {
             $message = "Invalid data";
-            $this->view->show("product/productdetail.php", ['mode' => 'add', 'message' => $message]);
+            $list = $this->model->findAllProducts();
+            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         }
     }    
     /**
@@ -573,11 +579,13 @@ class MainController {
         //modify warehouse to database
         if (!is_null($warehouse)) {
             $result = $this->model->modifyWarehouse($warehouse);
+            $list = $this->model->findAllWarehouse();
             $message = ($result > 0) ? "Successfully modified":"Error modifying";
-            $this->view->show("warehouse/warehousedetail.php", ['mode' => 'add', 'message' => $message]);
+            $this->view->show("warehouse/warehousemanage.php", ['mode' => 'add', 'message' => $message,"list" => $list]); 
         } else {
             $message = "Invalid data";
-            $this->view->show("warehouse/warehousedetail.php", ['mode' => 'add', 'message' => $message]);
+            $list = $this->model->findAllWarehouse();
+            $this->view->show("warehouse/warehousemanage.php", ['mode' => 'add', 'message' => $message,"list" => $list]); 
         }
     } 
 
