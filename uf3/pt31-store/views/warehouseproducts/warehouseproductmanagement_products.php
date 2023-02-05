@@ -1,32 +1,10 @@
-<!-- <h2>Warehouse management page</h2>
-<p>Sorry! Page under construction</p> -->
 <h2>WarehouseProducts management page</h2>
 <?php if (isset($params['message'])): ?>
 <div class='alert alert-warning'>
 <strong><?php echo $params['message']; ?></strong>
 </div>
 <?php endif ?>
-<!-- <form method="post">
-<div class="row g-3 align-items-center">
-  <span class="col-auto">
-    <label for="search" class="col-form-label">Category to search</label>
-  </span>
-  <span class="col-auto">
-    <input type="text" id="search" name="search" class="form-control" aria-describedby="searchHelpInline">
-  </span>
-  <span class="col-auto">
-    <button class="btn btn-primary" type="submit" name="action" value="user/role">Search</button>
-  </span>
-  <span class="col-auto">
-    <button class="btn btn-primary" type="submit" name="action" value="user/form">Add</button>
-  </span>
-</div>
-</form> -->
 <?php
-
-//display list in a table.
-//            <th>Id</th>
-// var_dump($params);
 $list = $params['list'] ?? null;
 $codes = $params['codes'] ?? null;
 $product = $params['product']?? null;
@@ -35,8 +13,6 @@ $wares = [];
 $sotks = [];
 $c = [];
 $idcode = [];
-var_dump(empty($list));
-// if (isset($list)) {
 if(!empty($list)){
     echo <<<EOT
     <form id="user-form" method="post" action="index.php">
@@ -64,13 +40,10 @@ EOT;
  
  foreach ($list as $index => $elem ) {
       $kv = $list[$index];
-      echo "Id: {$kv->getWarehouseid()}";
       $wi = $kv->getWarehouseid();
       array_push($wares,$wi);
-      echo 'Stock: '.$kv->getStock();
       $ws = $kv->getStock();  
       array_push($sotks,$ws);
-      echo '<br />';
   }
   $c = array_combine($wares,$sotks);
   foreach($warehouses as $wareshouse){
@@ -135,13 +108,10 @@ EOT;
      
      foreach ($list as $index => $elem ) {
           $kv = $list[$index];
-          echo "Id: {$kv->getWarehouseid()}";
           $wi = $kv->getWarehouseid();
           array_push($wares,$wi);
-          echo 'Stock: '.$kv->getStock();
           $ws = $kv->getStock();  
           array_push($sotks,$ws);
-          echo '<br />';
       }
       $c = array_combine($wares,$sotks);
       foreach($warehouses as $wareshouse){
