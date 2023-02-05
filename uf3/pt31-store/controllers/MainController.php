@@ -407,6 +407,13 @@ class MainController {
         $category = Validator::validateCategory(INPUT_POST);
         //remove the category from the database
         if (!is_null($category)) {
+            //new
+            $catid = $category->getId();
+            $productstodelete = $this->model->findProductByCategoryId($catid);
+            foreach($productstodelete as $product){
+                $this->model->finaldelete($product);
+            }
+            ///
             $result = $this->model->removeCategory($category);
             $message = ($result > 0) ? "Successfully removed":"Error removing, some products depend on this category, please delete first the products";
             $list = $this->model->findAllCategories();
