@@ -47,7 +47,7 @@ class Validator {
         $id = static::cleanAndValidate($method, 'id', FILTER_VALIDATE_INT); 
         $code = static::cleanAndValidate($method, 'code'); 
         $description = static::cleanAndValidate($method, 'description');  
-        $price = static::cleanAndValidate($method, 'price');  
+        $price = static::cleanAndValidate($method, 'price',FILTER_VALIDATE_INT);  
         $category_id = static::cleanAndValidate($method, 'category_id',FILTER_VALIDATE_INT);  
         $obj = new Product($id, $code, $description,$price,$category_id);
         return $obj;        
