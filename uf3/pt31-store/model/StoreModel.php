@@ -337,10 +337,24 @@ class StoreModel {
         }}else{$codes = [];}
         return $codes;
     }
-
+    /**
+     * remove the stock of a product
+     * @param Product $product the product that we want to remove the stock of
+     * @return int the number of rows affected
+     */
     public function removestock(Product $product):int{
         $dbHelper = new WarehouseProductDao();
         return $dbHelper->deletestock($product);
+    }
+    /**
+     * remove the stock of a product and then the product
+     * @param Product $product the product that we want to remove the database
+     * @return int the number of rows affected
+     */
+    public function finaldelete(Product $product):int{
+        $sock_removed = $this->removeStock($product);
+        $products_removed = $this->removeProduct($product);
+        return $products_removed ;
     }
     /**
      * find the user by the user and password
