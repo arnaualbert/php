@@ -24,7 +24,7 @@ if (isset($list)) {
         </div>
         <thead class='table-dark'>
         <tr>
-            <th>Product Id</th>
+            <th>Product Code</th>
             <th>Stocks</th>
         </tr>
         </thead>
