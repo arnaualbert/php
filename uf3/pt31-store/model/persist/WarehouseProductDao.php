@@ -140,18 +140,4 @@ class  WarehouseProductDao{
         return $data;   
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
