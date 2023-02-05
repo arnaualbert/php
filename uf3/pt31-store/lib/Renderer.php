@@ -77,19 +77,26 @@ class Renderer {
         return $html;
     }
 
-    private static function renderLabelSelect(string $prompt, string $name, mixed $value, string $options=""): string{
-        $html = <<<EOT
-        <div class="form-floating"> 
-        <select name="name" id="name">
-            
-            <option value="$value">$value</option>
-        </select>
-        <label for="$name">$prompt</label>     
-        </div>
-        EOT;
+    /**
+     * render html for a select
+     * @param string $prompt
+     * @param string $name
+     * @param array $options
+     * @param string $selectedvalue
+     * @param string $attributes
+     */
+    private static function renderLabelSelect(string $prompt, string $name, array $options, string $selectedValue, string $attributes=""): string {
+        $html = "<div class='form-floating'>";
+        $html .= "<select name='$name' id='$name' class='form-control' $attributes><br>";
+        foreach ($options as $value) {
+            $selected = ($value == $selectedValue) ? "selected" : "";
+            $html .= "<option value='$value' $selected>$value</option><br>";
+        }
+        $html .= "</select>\n";
+        $html .= "<label for='$name'>$prompt</label>";
+        $html .= "</div>\n";
         return $html;
     }
-
 
     // categories
         /**
@@ -112,16 +119,28 @@ class Renderer {
      * @param Product $product  
      * @return string html representation of fields
      */
+    // public static function renderProductFields(Product $product): string {
+    //     $result = "<fieldset>";
+    //     $result .= self::renderLabelInput("Id: ", "id", $product->getId(), "readonly placeholder='id'");
+    //     $result .= self::renderLabelInput("Code: ", "code", $product->getCode(), "placeholder='code'");
+    //     $result .= self::renderLabelInput("Description: ", "description", $product->getDescription(), "placeholder='description'");
+    //     $result .= self::renderLabelInput("Price: ", "price", $product->getPrice(), "placeholder='description'");
+    //     $result .= self::renderLabelInput("Category: ", "category_id", $product->getCategoryId(), "placeholder='description'");
+    //     $result .= "</fieldset>";
+    //     return $result;
+    // }
     public static function renderProductFields(Product $product): string {
         $result = "<fieldset>";
         $result .= self::renderLabelInput("Id: ", "id", $product->getId(), "readonly placeholder='id'");
         $result .= self::renderLabelInput("Code: ", "code", $product->getCode(), "placeholder='code'");
         $result .= self::renderLabelInput("Description: ", "description", $product->getDescription(), "placeholder='description'");
         $result .= self::renderLabelInput("Price: ", "price", $product->getPrice(), "placeholder='description'");
-        $result .= self::renderLabelInput("Category: ", "category_id", $product->getCategoryId(), "placeholder='description'");
+        $result .= self::renderLabelSelect("Category: ", "category_id",[1,2,3,4,5] ,$product->getCategoryId(), "placeholder='description'");
         $result .= "</fieldset>";
         return $result;
     }
+
+
             // categories
         /**
      * renders fields for a user's form
