@@ -563,7 +563,7 @@ class MainController {
         }
     }
     /**
-     * list all the warehouseproducts that have the product
+     * list all the warehouseproducts that have the
      */
     public function doListWarehouseProductsByProduct_id(){
         // $idtoSearch = \filter_input(INPUT_POST, "search");

@@ -54,11 +54,21 @@ class Renderer {
         $result .= self::renderLabelInput("Password: ", "password", $user->getPassword(), "placeholder='password'");
         $result .= self::renderLabelInput("Fistname: ", "firstname", $user->getFirstname(), "placeholder='firstname'");
         $result .= self::renderLabelInput("Lastname: ", "lastname", $user->getLastname(), "placeholder='lastname'");
-        $result .= self::renderLabelInput("Role: ", "role", $user->getRole(), "placeholder='role'");
+        $result .= self::renderLabelSelect("Role: ", "role",['staff','admin'],$user->getRole(), "placeholder='role'");
         $result .= "</fieldset>";
         return $result;
     }
-    
+    public static function renderUserAddFields(User $user): string {
+        $result = "<fieldset>";
+        $result .= self::renderLabelInput("Id: ", "id", $user->getId(), "readonly placeholder='id'");
+        $result .= self::renderLabelInput("Username: ", "username", $user->getUsername(), "placeholder='username'");
+        $result .= self::renderLabelInput("Password: ", "password", $user->getPassword(), "placeholder='password'");
+        $result .= self::renderLabelInput("Fistname: ", "firstname", $user->getFirstname(), "placeholder='firstname'");
+        $result .= self::renderLabelInput("Lastname: ", "lastname", $user->getLastname(), "placeholder='lastname'");
+        $result .= self::renderLabelSelectAddUser("Role: ", "role",['staff','admin'], "placeholder='role'");
+        $result .= "</fieldset>";
+        return $result;
+    }
     /**
      * renders html representation of a label-input pair
      * @param string $prompt text for the label
@@ -86,6 +96,21 @@ class Renderer {
      * @param string $attributes
      */
     private static function renderLabelSelect(string $prompt, string $name, array $options, string $selectedValue, string $attributes=""): string {
+        $html = "<div class='form-floating'>";
+        $html .= "<select name='$name' id='$name' class='form-control' $attributes><br>";
+        foreach ($options as $value) {
+            $selected = ($value == $selectedValue) ? "selected" : "";
+            $html .= "<option value='$value' $selected>$value</option><br>";
+        }
+        $html .= "</select>\n";
+        $html .= "<label for='$name'>$prompt</label>";
+        $html .= "</div>\n";
+        return $html;
+    }
+
+
+    private static function renderLabelSelectAddUser(string $prompt, string $name,array $options, string $selectedValue = "staff", string $attributes=""): string {
+        $options = array("staff", "admin");
         $html = "<div class='form-floating'>";
         $html .= "<select name='$name' id='$name' class='form-control' $attributes><br>";
         foreach ($options as $value) {
@@ -134,8 +159,8 @@ class Renderer {
         $result .= self::renderLabelInput("Id: ", "id", $product->getId(), "readonly placeholder='id'");
         $result .= self::renderLabelInput("Code: ", "code", $product->getCode(), "placeholder='code'");
         $result .= self::renderLabelInput("Description: ", "description", $product->getDescription(), "placeholder='description'");
-        $result .= self::renderLabelInput("Price: ", "price", $product->getPrice(), "placeholder='description'");
-        $result .= self::renderLabelSelect("Category: ", "category_id",[1,2,3,4,5] ,$product->getCategoryId(), "placeholder='description'");
+        $result .= self::renderLabelInput("Price: ", "price", $product->getPrice(), "placeholder='price'");
+        $result .= self::renderLabelSelect("Category: ", "category_id",[1,2,3,4,5] ,$product->getCategoryId(), "placeholder='category_id'");
         $result .= "</fieldset>";
         return $result;
     }

@@ -17,7 +17,10 @@ if (isset($params['mode'])) {
 }
 $user = $params['user'] ?? new User();
 echo "<form method='post' action=\"index.php\">";
-echo proven\lib\views\Renderer::renderUserFields($user);
+if($params['mode']!='add') {
+echo proven\lib\views\Renderer::renderUserFields($user);}else{
+    echo proven\lib\views\Renderer::renderUserAddFields($user);
+}
 echo "<button type='submit' name='action' value='user/add' $addDisable>Add</button>";
 echo "<button type='submit' name='action' value='user/modify' $editDisable>Modify</button>";
 echo "<button type='submit' name='action' value='user/remove' $editDisable>Remove</button>";
