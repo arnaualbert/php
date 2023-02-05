@@ -26,6 +26,10 @@ class Validator {
         return $obj;        
     }
     //echo por arnau
+    /**
+     * validate the category
+     * @param int $method
+     */
     public static function validateCategory(int $method) {
         $obj = null;
         $id = static::cleanAndValidate($method, 'id', FILTER_VALIDATE_INT); 
@@ -34,7 +38,10 @@ class Validator {
         $obj = new Category($id, $code, $description);
         return $obj;        
     }
-
+    /**
+     * validate the product
+     * @param int $method
+     */
     public static function validateProduct(int $method) {
         $obj = null;
         $id = static::cleanAndValidate($method, 'id', FILTER_VALIDATE_INT); 
@@ -45,7 +52,10 @@ class Validator {
         $obj = new Product($id, $code, $description,$price,$category_id);
         return $obj;        
     }
-
+    /**
+     * validate warehouse
+     * @param int $method
+     */
     public static function validateWarehouse(int $method) {
         $obj = null;
         $id = static::cleanAndValidate($method, 'id', FILTER_VALIDATE_INT); 
@@ -55,10 +65,6 @@ class Validator {
         return $obj;        
     }
 
-    // public static function validateLogin(int $method){
-    //     $obj = null
-    //     return $obj;
-    // }
 
     public static function cleanAndValidate(int $method, string $variable, int $filter=\FILTER_SANITIZE_FULL_SPECIAL_CHARS) {
         $clean = null;

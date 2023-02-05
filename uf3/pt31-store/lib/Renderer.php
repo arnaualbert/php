@@ -109,7 +109,7 @@ class Renderer {
         // categories
         /**
      * renders fields for a user's form
-     * @param Product $user 
+     * @param Product $product  
      * @return string html representation of fields
      */
     public static function renderProductFields(Product $product): string {
@@ -125,7 +125,7 @@ class Renderer {
             // categories
         /**
      * renders fields for a user's form
-     * @param Warehouse $user 
+     * @param Warehouse $warehouse  
      * @return string html representation of fields
      */
     public static function renderWarehouseFields(Warehouse $warehouse): string {
