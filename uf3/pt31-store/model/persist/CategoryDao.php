@@ -277,8 +277,8 @@ class CategoryDao {
             $success = $stmt->execute(); //bool
             $numAffected = $success ? $stmt->rowCount() : 0;
         } catch (\PDOException $e) {
-            // print "Error Code <br>".$e->getCode();
-            // print "Error Message <br>".$e->getMessage();
+            //print "Error Code <br>".$e->getCode();
+            //print "Error Message <br>".$e->getMessage();
             // print "Strack Trace <br>".nl2br($e->getTraceAsString());
             $numAffected = 0;
         }

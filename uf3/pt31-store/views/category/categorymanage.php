@@ -42,7 +42,7 @@ EOT;
             <tr>
                 <td><a href="index.php?action=category/edit&id={$elem->getId()}">{$elem->getCode()}</a></td>               
                 <td><a href="index.php?action=category/edit&id={$elem->getId()}">{$elem->getDescription()}</a></td>
-                <td><button class="btn btn-secondary" type='submit' name='action' value='category/remove'>Remove</button></td>
+                <td><button class="btn btn-secondary"><a href="index.php?action=category/delete&id={$elem->getId()}">Remove</button></td>
             </tr>  
             </form>             
 EOT;

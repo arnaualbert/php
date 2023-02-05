@@ -17,8 +17,7 @@ if (isset($params['mode'])) {
 }
 $product = $params['product'] ?? new Product();
 echo "<form method='post' action=\"index.php\">";
-echo proven\lib\views\Renderer::renderProductFields($product);
-echo "<button type='submit' name='action' value='product/add' $addDisable>Add</button>";
-echo "<button type='submit' name='action' value='product/modify' $editDisable>Modify</button>";
-//echo "<button type='submit' name='action' value='product/remove' $editDisable>Remove</button>";
+echo "Do you want to remove the product with this carecteristics?";
+echo proven\lib\views\Renderer::renderProductDeleteFields($product);
+echo "<button type='submit' name='action' value='product/remove' $editDisable>Remove</button>";
 echo "</form>";

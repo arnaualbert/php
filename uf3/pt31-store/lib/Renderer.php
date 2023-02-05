@@ -137,7 +137,14 @@ class Renderer {
         $result .= "</fieldset>";
         return $result;
     }
-
+    public static function renderCategoryFieldsDelete(Category $category): string {
+        $result = "<fieldset>";
+        $result .= self::renderLabelInput("Id: ", "id", $category->getId(), "readonly placeholder='id'");
+        $result .= self::renderLabelInput("Code: ", "code", $category->getCode(), "readonly placeholder='code'");
+        $result .= self::renderLabelInput("Description: ", "description", $category->getDescription(), "readonly placeholder='description'");
+        $result .= "</fieldset>";
+        return $result;
+    }
         // categories
         /**
      * renders fields for a user's form
@@ -164,7 +171,15 @@ class Renderer {
         $result .= "</fieldset>";
         return $result;
     }
-
+    public static function renderProductDeleteFields(Product $product): string {
+        $result = "<fieldset>";
+        $result .= self::renderLabelInput("Id: ", "id", $product->getId(), "readonly placeholder='id'");
+        $result .= self::renderLabelInput("Code: ", "code", $product->getCode(), "readonly placeholder='code'");
+        $result .= self::renderLabelInput("Description: ", "description", $product->getDescription(), "readonly placeholder='description'");
+        $result .= self::renderLabelInput("Price: ", "price", $product->getPrice(), "readonly laceholder='price'");
+        $result .= self::renderLabelInput("Category: ", "category_id",$product->getCategoryId(), "readonly placeholder='category_id'");        $result .= "</fieldset>";
+        return $result;
+    }
 
             // categories
         /**

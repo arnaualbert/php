@@ -337,6 +337,11 @@ class StoreModel {
         }}else{$codes = [];}
         return $codes;
     }
+
+    public function removestock(Product $product):int{
+        $dbHelper = new WarehouseProductDao();
+        return $dbHelper->deletestock($product);
+    }
     /**
      * find the user by the user and password
      * @param $username is the username

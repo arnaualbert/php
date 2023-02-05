@@ -106,6 +106,12 @@ class MainController {
             case 'product/edit':
                 $this->doProductEditForm("edit");
                 break;
+            case 'product/delete':
+                $this->doProductDeleteForm("delete");
+                break;
+            case 'category/delete':
+                $this->doCategorytDeleteForm("delete");
+                break;
             case 'warehouse':
                 $this->doWareHouseMng();
                 break;
@@ -377,6 +383,22 @@ class MainController {
             $this->view->show("category/categorydetail.php", ['mode' => 'add', 'message' => $message]);
         }
     }    
+
+    public function doCategorytDeleteForm(string $mode){
+        $data = array();
+        if ($mode != 'category/add') {
+            //search the product by the id
+            $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+            if (($id !== false) && (!is_null($id))) {
+                $category = $this->model->findCategoryById($id);
+                if (!is_null($category)) {
+                    $data['category'] = $category;
+                }
+             }
+             $data['mode'] = $mode;
+        }
+        $this->view->show("category/categoryremove.php", $data);  
+    }
     /**
      * remove a category from the database.
      */
@@ -386,8 +408,9 @@ class MainController {
         //remove the category from the database
         if (!is_null($category)) {
             $result = $this->model->removeCategory($category);
-            $message = ($result > 0) ? "Successfully removed":"Error removing";
-            $this->view->show("category/categorymanage.php", ['mode' => 'add', 'message' => $message]);
+            $message = ($result > 0) ? "Successfully removed":"Error removing, some products depend on this category, please delete first the products";
+            $list = $this->model->findAllCategories();
+            $this->view->show("category/categorymanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         } else {
             $message = "Invalid data";
             $this->view->show("category/categorymanage.php", ['mode' => 'add', 'message' => $message]);
@@ -439,6 +462,22 @@ class MainController {
         }
         $this->view->show("product/productdetail.php", $data);  
     }
+
+    public function doProductDeleteForm(string $mode){
+        $data = array();
+        if ($mode != 'product/add') {
+            //search the product by the id
+            $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+            if (($id !== false) && (!is_null($id))) {
+                $product = $this->model->findProductById($id);
+                if (!is_null($product)) {
+                    $data['product'] = $product;
+                }
+             }
+             $data['mode'] = $mode;
+        }
+        $this->view->show("product/productremove.php", $data);  
+    }
     /**
      *  add a new product to the database
      */
@@ -478,16 +517,16 @@ class MainController {
         //remove product to database
         if (!is_null($product)) {
             $result = $this->model->removeProduct($product);
+            $result += $this->model->removestock($product);
             $list = $this->model->findAllProducts();
             $message = ($result > 0) ? "Successfully removed":"Error removing";
-            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
+            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,"list" => $list]);
         } else {
             $list = $this->model->findAllProducts();
             $message = "Invalid data";
-            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
+            $this->view->show("product/productmanage.php", ['mode' => 'add', 'message' => $message,"list" => $list]);
         }
     } 
-
         /* ============== WAREHOUSE MANAGEMENT CONTROL METHODS ============== */
 
     /**
@@ -542,9 +581,7 @@ class MainController {
         $this->view->show("warehouseproducts/warehouseproductmanagement.php",['list'=>$result]);
     }
 
-    /**
-     * list all the warehouseproducts
-     */
+    
     public function doListWarehouseProductsByIdWarehouse_id(){
         // $idtoSearch = \filter_input(INPUT_POST, "search");
         $idtoSearch = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -562,9 +599,7 @@ class MainController {
             $this->view->show("warehouseproducts/warehouseproductmanagement_warehouse.php", ['message' => "No data found"]);   
         }
     }
-    /**
-     * list all the warehouseproducts that have the
-     */
+    
     public function doListWarehouseProductsByProduct_id(){
         // $idtoSearch = \filter_input(INPUT_POST, "search");
         $idtoSearch = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);

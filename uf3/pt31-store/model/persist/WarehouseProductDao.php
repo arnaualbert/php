@@ -4,10 +4,10 @@ namespace proven\store\model\persist;
 
 require_once 'model/persist/StoreDb.php';
 require_once 'model/WarehouseProduct.php';
-
+require_once 'model/Product.php';
 use proven\store\model\persist\StoreDb as DbConnect;
 use proven\store\model\WarehouseProduct as WarehouseProduct;
-
+use proven\store\model\Product as Product;
 /**
  * Warehousesproduct database persistence class.
  * @author luis cardenete
@@ -41,6 +41,10 @@ class  WarehouseProductDao{
         $this->queries['SELECT_ALL'] = \sprintf(
                 "select * from %s", 
                 self::$TABLE_NAME
+        );
+        $this->queries['DELETE_STOCK'] = \sprintf(
+            "delete from %s where product_id = :id",
+            self::$TABLE_NAME
         );
     }
     /**
@@ -139,5 +143,31 @@ class  WarehouseProductDao{
         }   
         return $data;   
     }
+
+
+
+        /**
+     * deletes entity from database.
+     * @param entity the entity object to delete.
+     * @return number of rows affected.
+     */
+    public function deletestock(Product $entity): int {
+        $numAffected = 0;
+        try {
+            //PDO object creation.
+            $connection = $this->dbConnect->getConnection(); 
+            //query preparation.            
+            $stmt = $connection->prepare($this->queries['DELETE_STOCK']);
+            $stmt->bindValue(':id', $entity->getId(), \PDO::PARAM_INT);
+            $success = $stmt->execute(); //bool
+            $numAffected = $success ? $stmt->rowCount() : 0;
+        } catch (\PDOException $e) {
+            // print "Error Code <br>".$e->getCode();
+            // print "Error Message <br>".$e->getMessage();
+            // print "Strack Trace <br>".nl2br($e->getTraceAsString());
+            $numAffected = 0;
+        }
+        return $numAffected;        
+    } 
 
 }

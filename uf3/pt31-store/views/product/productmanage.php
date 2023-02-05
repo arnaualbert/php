@@ -80,6 +80,9 @@ EOT;
     //                <td><a href="index.php?action=user/edit&id={$elem->getId()}">{$elem->getId()}</a></td>
     //<a href="index.php?action=category/edit&id={$elem->getId()}"></a>
     //<td><form method='post' action=\"index.php\"><button type='submit' name='action' value='category/remove'>Remove</button></form></td>
+    //////funciona sin remove
+    //<td><button class="btn btn-secondary"><a href="index.php?action=stock/productid&id={$elem->getId()}">Stocks</a></button><button type='submit' class="btn btn-secondary" name='action'><a href="index.php?action=product/edit&id={$elem->getId()}">Modify</a></button><button type='submit' class="btn btn-secondary" name='action' value='product/remove'>Remove</button></td>
+    ///////
     foreach ($list as $elem) {
         echo <<<EOT
         <style>
@@ -100,8 +103,8 @@ EOT;
                 <td>{$elem->getCode()}</a></td>               
                 <td>{$elem->getDescription()}</a></td>
                 <td>{$elem->getPrice()}</a></td>
-                <td><button class="btn btn-secondary"><a href="index.php?action=stock/productid&id={$elem->getId()}">Stocks</a></button><button type='submit' class="btn btn-secondary" name='action'><a href="index.php?action=product/edit&id={$elem->getId()}">Modify</a></button><button type='submit' class="btn btn-secondary" name='action' value='product/remove'>Remove</button></td>
-            </tr>  
+                <td><button class="btn btn-secondary"><a href="index.php?action=stock/productid&id={$elem->getId()}">Stocks</a></button><button type='submit' class="btn btn-secondary" name='action'><a href="index.php?action=product/edit&id={$elem->getId()}">Modify</a></button><button type='submit' class="btn btn-secondary"><a href="index.php?action=product/delete&id={$elem->getId()}">Remove</a></button></td>
+                </tr>  
             </form>             
 EOT;
     }
