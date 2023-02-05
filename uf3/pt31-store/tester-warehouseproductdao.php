@@ -8,9 +8,9 @@ require_once "model/WarehouseProduct.php";
 use proven\store\model\persist\WarehouseProductDao;
 
 $dao = new WarehouseProductDao();
-//new WarehouseProduct()
-//debug\Debug::display($dao->selectAll());
-//debug\Debug::display($dao->selectWhere('product_id', '2'));
+
+debug\Debug::display($dao->selectAll());
+debug\Debug::display($dao->selectWhere('product_id', '2'));
 debug\Debug::display($dao->selectWhere('warehouse_id', '2'));
 
 
