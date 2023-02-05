@@ -376,11 +376,12 @@ class MainController {
         //modify the category to database
         if (!is_null($category)) {
             $result = $this->model->modifyCategory($category);
+            $list = $this->model->findAllCategories();
             $message = ($result > 0) ? "Successfully modified":"Error modifying";
-            $this->view->show("category/categorydetail.php", ['mode' => 'add', 'message' => $message]);
+            $this->view->show("category/categorymanage.php", ['mode' => 'add', 'message' => $message,'list'=>$list]);
         } else {
             $message = "Invalid data";
-            $this->view->show("category/categorydetail.php", ['mode' => 'add', 'message' => $message]);
+            $this->view->show("category/categorymanage.php", ['mode' => 'add', 'message' => $message,'list'=>$list]);
         }
     }    
 
@@ -420,7 +421,8 @@ class MainController {
             $this->view->show("category/categorymanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         } else {
             $message = "Invalid data";
-            $this->view->show("category/categorymanage.php", ['mode' => 'add', 'message' => $message]);
+            $list = $this->model->findAllCategories();
+            $this->view->show("category/categorymanage.php", ['mode' => 'add', 'message' => $message,'list' => $list]);
         }
     } 
 

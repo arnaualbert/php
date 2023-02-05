@@ -90,8 +90,7 @@ EOT;
           display: none;
         }
         a {
-          color: Black;
-          text-decoration: none;
+          color: White;
        }
       </style>
       <input name="id" id="id" value={$elem->getId()}>
@@ -111,7 +110,7 @@ EOT;
     echo "</tbody>";
     echo "</table>";
     echo "<div class='alert alert-info' role='alert'>";
-    echo count($list), " elements found.";
+    echo count($list), " products found.";
     echo "</div>";   
 } else {
     echo "No data found";
@@ -164,7 +163,7 @@ EOT;
     echo "</tbody>";
     echo "</table>";
     echo "<div class='alert alert-info' role='alert'>";
-    echo count($list), " elements found.";
+    echo count($list), " products found.";
     echo "</div>";   
 } else {
     echo "No data found";
