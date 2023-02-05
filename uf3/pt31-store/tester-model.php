@@ -13,37 +13,112 @@ use proven\store\model\Warehouse;
 
 $model = new StoreModel();
 
-// $s = $model->findcodeandproduct(1);
-// $idwarehouse = [];
-// $idproducts = [];
-// $codes = [];
-// $idw = $s[0]->getWarehouseid();
-// array_push($idwarehouse,$idw);
-// foreach($s as $p){
-//     $idp = $p->getProductid();
-//     array_push($idproducts,$idp);
-// }
-// // var_dump($idproducts);
-// // var_dump($idwarehouse);
-// foreach($idproducts as $idproduct){
-//     $s = $model->findProductById($idproduct);
-//     $code = $s->getCode();
-//     array_push($codes,$code);
-// }
-// var_dump($codes);
 
-
-var_dump($model->doeverything(1));
-
-// debug\Debug::display($model->findcodeandproduct(1));
-
-
-
-// debug\Debug::display($model->findWarehouseProductByProduct_id(1));
-// debug\Debug::display($model->findWarehouseProductByWarehouse_id(1));
-
-
-
-
-// debug\Debug::printr($model->findStocksByProduct(new Product(1)));
-// debug\Debug::printr($model->findStocksByWarehouse(new Warehouse(1)));
+echo "    /* ============== USER  METHODS ============== */";
+echo "<br/>";
+echo 'find all users';
+echo "<br>";
+debug\Debug::display($model->findAllUsers());
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find users by role = admin';
+echo "<br>";
+debug\Debug::display($model->findUsersByRole("admin"));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find users by role = staff';
+echo "<br>";
+debug\Debug::display($model->findUsersByRole("staff"));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find users by id = 1';
+echo "<br>";
+debug\Debug::objectprint($model->findUserById(1));
+echo "<br>";
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br/>";
+echo "    /* ============== CATEGORIES  METHODS ============== */";
+echo "<br>";
+echo 'find all categories';
+echo "<br>";
+debug\Debug::display($model->findAllCategories());
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find category by code = catcode01';
+echo "<br>";
+debug\Debug::display($model->findCategoryByCode("catcode01"));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find category by code = catcode02';
+echo "<br>";
+debug\Debug::display($model->findCategoryByCode("catcode02"));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find category by id = 1';
+echo "<br>";
+debug\Debug::objectprint($model->findCategoryById(1));
+echo "<br/>";
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br/>";
+echo "    /* ============== PRODUCTS METHODS ============== */";
+echo "<br>";
+echo 'find all products';
+echo "<br>";
+debug\Debug::display($model->findAllProducts());
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find product by category id = 1';
+echo "<br>";
+debug\Debug::display($model->findProductByCategoryId(1));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find product by categorycode = catcode02';
+echo "<br>";
+debug\Debug::display($model->findProductByCategoryCode("catcode02"));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find product by id = 1';
+echo "<br>";
+debug\Debug::objectprint($model->findProductById(1));
+echo "<br/>";
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br/>";
+echo "    /* ============== WAREHOUSE METHODS ============== */";
+echo "<br>";
+echo 'find all warehouse';
+echo "<br>";
+debug\Debug::display($model->findAllWarehouse());
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find warehouse by id = 1';
+echo "<br>";
+debug\Debug::objectprint($model->findWarehouseById(1));
+echo "<br/>";
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br/>";
+echo "    /* ============== WAREHOUSEPRODUCTS METHODS ============== */";
+echo "<br>";
+echo 'find all warehouseproducts';
+echo "<br>";
+debug\Debug::display($model->findAllWarehouseProduct());
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find warehouseproducts by warehouseid = 1';
+echo "<br>";
+debug\Debug::display($model->findWarehouseProductByWarehouse_id(1));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find warehouseproducts by productid = 3';
+echo "<br>";
+debug\Debug::display($model->findWarehouseProductByProduct_id(3));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find warehouse code by productid = 3';
+echo "<br>";
+debug\Debug::display($model->getwarehousecodes(3));
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'find producr code by warehouseid = 1';
+echo "<br>";
+debug\Debug::display($model->getproductscodes(1));
+echo "<br/>";
