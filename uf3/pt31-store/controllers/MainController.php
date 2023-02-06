@@ -599,12 +599,13 @@ class MainController {
         $this->view->show("warehouseproducts/warehouseproductmanagement.php",['list'=>$result]);
     }
 
-    
+    /**
+     * list the warehouseproducts by the warehouse id.
+     */
     public function doListWarehouseProductsByIdWarehouse_id(){
-        // $idtoSearch = \filter_input(INPUT_POST, "search");
         $idtoSearch = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($idtoSearch !== false) {
-            //get users with that role.
+            //get warehouseproducts by warehouseid
             $result = $this->model->findWarehouseProductByWarehouse_id($idtoSearch);
             //new (codes)
             $codes = $this->model->getproductscodes($idtoSearch);
@@ -617,19 +618,19 @@ class MainController {
             $this->view->show("warehouseproducts/warehouseproductmanagement_warehouse.php", ['message' => "No data found"]);   
         }
     }
-    
+    /**
+     * list the warehouseproducts by the product id.
+     */
     public function doListWarehouseProductsByProduct_id(){
-        // $idtoSearch = \filter_input(INPUT_POST, "search");
         $idtoSearch = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($idtoSearch !== false) {
-            //get users with that role.
-            // $result = $this->model->findProductByCategoryId($idtoSearch);
+            //get warehouseproducts by productid
             $result = $this->model->findWarehouseProductByProduct_id($idtoSearch);
             //new (codes)
             $codes = $this->model->getwarehousecodes($idtoSearch);
             // product info
             $product = $this->model->findProductById($idtoSearch);
-
+            // all the warehouse
             $warehouses = $this->model->findAllWarehouse();
             //pass list to view and show.
             $this->view->show("warehouseproducts/warehouseproductmanagement_products.php", ['list' => $result,'codes' => $codes,'product' => $product,'warehouses' => $warehouses]);   
