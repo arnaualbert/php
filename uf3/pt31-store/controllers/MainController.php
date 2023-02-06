@@ -531,8 +531,6 @@ class MainController {
         $product = Validator::validateProduct(INPUT_POST);
         //remove product to database
         if (!is_null($product)) {
-            // $result = $this->model->removeProduct($product);
-            // $result += $this->model->removestock($product);
             $result = $this->model->finaldelete($product);
             $list = $this->model->findAllProducts();
             $message = ($result > 0) ? "Successfully removed":"Error removing";
