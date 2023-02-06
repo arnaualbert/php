@@ -437,14 +437,13 @@ class MainController {
     }
 
     /**
-     * list all the products by their category id.
+     * list all the products by their category id/code.
      */
     public function doListProductsByCategoryId() {
         //get the id to search for
         $idtoSearch = \filter_input(INPUT_POST, "search");
         if ($idtoSearch !== false) {
-            //get the products searched by the category id
-            // $result = $this->model->findProductByCategoryId($idtoSearch);
+            //get the products searched by the category code
             $result = $this->model->findProductByCategoryCode($idtoSearch);
             //pass list to view and show.
             $this->view->show("product/productmanage.php", ['list' => $result]);   
@@ -471,7 +470,9 @@ class MainController {
         }
         $this->view->show("product/productdetail.php", $data);  
     }
-
+    /**
+     * do the delete form of the product
+     */
     public function doProductDeleteForm(string $mode){
         $data = array();
         if ($mode != 'product/add') {
