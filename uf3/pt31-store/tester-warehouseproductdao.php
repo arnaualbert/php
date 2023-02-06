@@ -9,8 +9,16 @@ use proven\store\model\persist\WarehouseProductDao;
 
 $dao = new WarehouseProductDao();
 
+
+echo 'select all warehouseproducts';
+echo '<br>';
 debug\Debug::display($dao->selectAll());
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo '<br>';
+echo 'select where product_id = 2';
 debug\Debug::display($dao->selectWhere('product_id', '2'));
+echo '<br>';
+echo 'seect where warehouse_id = 2';
 debug\Debug::display($dao->selectWhere('warehouse_id', '2'));
 
 
