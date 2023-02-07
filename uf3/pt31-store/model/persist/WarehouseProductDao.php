@@ -8,10 +8,6 @@ require_once 'model/Product.php';
 use proven\store\model\persist\StoreDb as DbConnect;
 use proven\store\model\WarehouseProduct as WarehouseProduct;
 use proven\store\model\Product as Product;
-/**
- * Warehousesproduct database persistence class.
- * @author luis cardenete
-*/
 
 class  WarehouseProductDao{
 
