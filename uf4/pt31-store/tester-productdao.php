@@ -1,0 +1,56 @@
+<?php
+require_once "lib/Debug.php";
+use proven\lib\debug;
+debug\Debug::iniset();
+
+require_once "model/persist/ProductDao.php";
+require_once "model/Product.php";
+
+use proven\store\model\persist\ProductDao;
+use proven\store\model\Product;
+
+$dao = new ProductDao();
+echo 'select all Product';
+echo "<br>";
+debug\Debug::display($dao->selectAll());
+echo "<br>";
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'select by id';
+echo "<br>";
+debug\Debug::objectprint($dao->select(new Product(1)));
+echo "<br>";
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo 'select where category_id = 4';
+echo "<br>";
+debug\Debug::display($dao->selectWhere("category_id",4 ));
+echo "<br>";
+echo 'select where price = 105.0';
+echo "<br>";
+debug\Debug::display($dao->selectWhere("price",105.0 ));
+echo "<br>";
+echo 'select where description = proddesc02';
+echo "<br>";
+debug\Debug::display($dao->selectWhere("description","proddesc02" ));
+echo "<br>";
+echo 'select where code = prodcode01';
+echo "<br>";
+debug\Debug::display($dao->selectWhere("code","prodcode01" ));
+echo "<br>";
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
+echo "insert";
+debug\Debug::display($dao->selectAll());
+var_dump($dao->insert(new Product(23,"prodcode023", "proddesc023", 199.0, 1)));
+echo "<br>";
+echo "update";
+debug\Debug::display($dao->selectAll());
+var_dump($dao->update(new Product(11,"prodcode029", "proddesc023", 199.0, 1)));
+echo "<br>";
+echo "delete";
+debug\Debug::display($dao->selectAll());
+var_dump($dao->delete(new Product(15,"prodcode029", "proddesc023", 199.0, 1)));
+echo "<br>";
+echo '----------------------------------------------------------------------------------------------------------------------------------';
+echo "<br>";
