@@ -8,4 +8,4 @@
         <button type="submit" name="action" value="user/login">Login</button>
     </fieldset>
 </form>
-<?php
+<?php ?>

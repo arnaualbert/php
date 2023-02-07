@@ -140,7 +140,7 @@ EOT;
         echo "</table>";
         echo "<div class='alert alert-info' role='alert'>";
         echo count($list), " products found.";
-        echo "</div>";  
+        echo "</div>";
 }
 
 ?>

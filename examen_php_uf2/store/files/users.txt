@@ -13,3 +13,5 @@ asds;asdasd;123
 andrea;cule;22
 hola;adios;86
 rosco;pasa;23
+asd;asd;12
+ww;ww;1
