@@ -9,6 +9,11 @@ use proven\store\model\persist\StoreDb as DbConnect;
 use proven\store\model\WarehouseProduct as WarehouseProduct;
 use proven\store\model\Product as Product;
 
+/**
+ * Warehouseproduct database persistence class.
+ * @author arnaualbert
+ */
+
 class  WarehouseProductDao{
 
     /**

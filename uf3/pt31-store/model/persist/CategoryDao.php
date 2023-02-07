@@ -9,7 +9,7 @@ use proven\store\model\Category as Category;
 
 /**
  * User database persistence class.
- * @author ProvenSoft
+ * @author arnaualbert
  */
 class CategoryDao {
 

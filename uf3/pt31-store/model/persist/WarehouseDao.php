@@ -8,8 +8,8 @@ use proven\store\model\persist\StoreDb as DbConnect;
 use proven\store\model\Warehouse as Warehouse;
 
 /**
- * User database persistence class.
- * @author ProvenSoft
+ * Warehouse database persistence class.
+ * @author arnaualbert
  */
 class WarehouseDao {
 

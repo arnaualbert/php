@@ -15,7 +15,7 @@ use proven\lib\views\Validator as Validator;
 
 /**
  * Main controller
- * @author ProvenSoft
+ * @author arnaualbert
  */
 class MainController {
     /**
@@ -172,6 +172,7 @@ class MainController {
                 break;
             case 'category/remove':
                 $this->doCategoryRemove();
+                break;
             // product
             case 'product/categoryid':
                 $this->doListProductsByCategoryId();

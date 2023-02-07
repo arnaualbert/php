@@ -32,7 +32,6 @@ if (isset($list)) {
 </div>
 </form>
 EOT;}
-//<?php
 //display list in a table.
 $list = $params['list'] ?? null;
 if (isset($list)) {

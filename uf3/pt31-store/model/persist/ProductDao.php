@@ -9,7 +9,7 @@ use proven\store\model\Product as Product;
 
 /**
  * Product database persistence class.
- * @author ProvenSoft
+ * @author arnaualbert
  */
 class ProductDao {
 

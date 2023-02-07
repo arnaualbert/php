@@ -18,7 +18,5 @@ if (isset($params['mode'])) {
 $warehouse = $params['warehouse'] ?? new Warehouse();
 echo "<form method='post' action=\"index.php\">";
 echo proven\lib\views\Renderer::renderWarehouseFields($warehouse);
-// echo "<button type='submit' name='action' value='warehouse/add' $addDisable>Add</button>";
 echo "<button type='submit' name='action' value='warehouse/modify' $editDisable>Modify</button>";
-// echo "<button type='submit' name='action' value='product/remove' $editDisable>Remove</button>";
 echo "</form>";

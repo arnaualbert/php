@@ -1,6 +1,3 @@
-
-<!-- // echo "<h2>Login page</h2>";
-// echo "<p>Sorry! Page under construction</p>"; -->
 <h2>Login</h2>
 <?php if (isset($params['message'])): ?>
 <div class='alert alert-warning'>

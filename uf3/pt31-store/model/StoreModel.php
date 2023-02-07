@@ -25,7 +25,7 @@ use proven\store\model\persist\WarehouseProductDao;
 
 /**
  * Service class to provide data.
- * @author ProvenSoft
+ * @author arnaualbert
  */
 class StoreModel {
 

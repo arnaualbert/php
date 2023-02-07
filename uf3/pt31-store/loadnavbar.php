@@ -4,7 +4,6 @@
  */
 $menupath = "views/mainmenu.php"; //default value.
 if (isset($_SESSION['userrole'])) {
-    // $userrole = filter_var($_SESSION['userrole'], FILTER_SANITIZE_STRING);
     $userrole = filter_var($_SESSION['userrole']);
     if ($userrole) {
         switch ($userrole) {

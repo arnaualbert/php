@@ -1,5 +1,3 @@
-<!-- <h2>Product management page</h2>
-<p>Sorry! Page under construction</p> -->
 <h2>Product management page</h2>
 <?php if (isset($params['message'])): ?>
 <div class='alert alert-warning'>
